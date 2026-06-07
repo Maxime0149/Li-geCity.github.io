@@ -1058,8 +1058,8 @@
                                 <input type="text" id="ppl-fullname" required>
                             </div>
                             <div class="form-group">
-                                <label>Pseudo In-Game *</label>
-                                <input type="text" id="ppl-pseudo" required>
+                                <label>Prénom *</label>
+                                <input type="text" id="ppl-prénom" required>
                             </div>
                         </div>
 
@@ -1135,8 +1135,8 @@
                                 <input type="text" id="rdv-fullname" required placeholder="Nom">
                             </div>
                             <div class="form-group">
-                                <label>Pseudo In-Game *</label>
-                                <input type="text" id="rdv-pseudo" required placeholder="Prénom">
+                                <label>Prénom *</label>
+                                <input type="text" id="rdv-prénom" required placeholder="Prénom">
                             </div>
                         </div>
 
@@ -1489,7 +1489,7 @@
 
             const formData = {
                 fullname:   document.getElementById('ppl-fullname').value,
-                pseudo:     document.getElementById('ppl-pseudo').value,
+                fullname:     document.getElementById('ppl-fullname').value,
                 email:      document.getElementById('ppl-email').value,
                 discord:    document.getElementById('ppl-discord').value,
                 date:       document.getElementById('ppl-date').value,
@@ -1505,10 +1505,10 @@
                 embeds: [{
                     color: 3447003,
                     title: '📋 Demande de Rendez-vous PPL',
-                    description: `**${formData.fullname}** (${formData.pseudo}) souhaite passer son **Permis PPL**.`,
+                    description: `**${formData.fullname}** (${formData.fullname}) souhaite passer son **Permis PPL**.`,
                     fields: [
                         { name: '👤 Nom', value: formData.fullname, inline: true },
-                        { name: '👤Prénom', value: formData.pseudo, inline: true },
+                        { name: '👤 Prénom', value: formData.fullname, inline: true },
                         { name: '📧 Email', value: formData.email, inline: true },
                         { name: '💬 Discord', value: formData.discord, inline: true },
                         { name: '📅 Date souhaitée', value: formData.date, inline: true },
@@ -1556,7 +1556,7 @@
 
             const formData = {
                 fullname: document.getElementById('rdv-fullname').value,
-                pseudo:   document.getElementById('rdv-pseudo').value,
+                fullname:   document.getElementById('rdv-fullname').value,
                 email:    document.getElementById('rdv-email').value,
                 discord:  document.getElementById('rdv-discord').value,
                 type:     document.getElementById('rdv-type').value,
@@ -1581,10 +1581,10 @@
                 embeds: [{
                     color: 13369344,
                     title: `📅 Demande de RDV — ${formData.type}`,
-                    description: `**${formData.fullname}** (${formData.pseudo}) souhaite un rendez-vous avec La Défense.`,
+                    description: `**${formData.fullname}** (${formData.fullname}) souhaite un rendez-vous avec La Défense.`,
                     fields: [
                         { name: '👤 Nom', value: formData.fullname, inline: true },
-                        { name: '👤 Prénom', value: formData.pseudo, inline: true },
+                        { name: '👤Prénom', value: formData.fullname, inline: true },
                         { name: '📧 Email', value: formData.email, inline: true },
                         { name: '💬 Discord', value: formData.discord, inline: true },
                         { name: `${emoji} Catégorie`, value: formData.type + (formData.company ? ` — *${formData.company}*` : ''), inline: true },
