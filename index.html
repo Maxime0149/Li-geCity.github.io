@@ -1507,8 +1507,8 @@
                     title: '📋 Demande de Rendez-vous PPL',
                     description: `**${formData.fullname}** (${formData.pseudo}) souhaite passer son **Permis PPL**.`,
                     fields: [
-                        { name: '👤 Nom Complet', value: formData.fullname, inline: true },
-                        { name: '🎮 Pseudo In-Game', value: formData.pseudo, inline: true },
+                        { name: '👤 Nom', value: formData.fullname, inline: true },
+                        { name: '👤Prénom', value: formData.pseudo, inline: true },
                         { name: '📧 Email', value: formData.email, inline: true },
                         { name: '💬 Discord', value: formData.discord, inline: true },
                         { name: '📅 Date souhaitée', value: formData.date, inline: true },
@@ -1584,7 +1584,7 @@
                     description: `**${formData.fullname}** (${formData.pseudo}) souhaite un rendez-vous avec La Défense.`,
                     fields: [
                         { name: '👤 Nom', value: formData.fullname, inline: true },
-                        { name: '👤Prénom', value: formData.pseudo, inline: true },
+                        { name: '👤 Prénom', value: formData.pseudo, inline: true },
                         { name: '📧 Email', value: formData.email, inline: true },
                         { name: '💬 Discord', value: formData.discord, inline: true },
                         { name: `${emoji} Catégorie`, value: formData.type + (formData.company ? ` — *${formData.company}*` : ''), inline: true },
