@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Défense -  Liège City</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        header {
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .nav-logo img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #cc0000;
+        }
+
+        /* Main Container */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Sections */
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Home Page */
+        .home-page {
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .home-logo {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 30px;
+        }
+
+        .home-page h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .home-page .subtitle {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .home-video {
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            margin: 40px auto;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .home-video iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .home-description {
+            max-width: 800px;
+            margin: 40px auto;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #cc0000;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+
+        .cta-button:hover {
+            background: #990000;
+        }
+
+        .cta-button.secondary {
+            background: #999;
+            border: 2px solid #333;
+        }
+
+        .cta-button.secondary:hover {
+            background: #777;
+        }
+
+        /* Missions Section */
+        .missions-section {
+            padding: 60px 0;
+        }
+
+        .missions-section h2 {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #333;
+        }
+
+        .missions-description {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .missions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .mission-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .mission-card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #cc0000;
+            font-weight: bold;
+        }
+
+        .mission-card p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Form Section */
+        .form-section {
+            padding: 60px 0;
+            background: #f9f9f9;
+            margin-top: 40px;
+            border-radius: 8px;
+        }
+
+        .form-section h2 {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+        .form-wrapper {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #cc0000;
+            box-shadow: 0 0 5px rgba(204,0,0,0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .form-actions {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        button[type="submit"] {
+            background: #cc0000;
+            color: white;
+            border: none;
+            padding: 12px 40px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background: #990000;
+        }
+
+        /* Messages */
+        .message {
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        /* Carrières Page */
+        .carrieres-section { padding: 60px 0; }
+        .carrieres-section h2 { font-size: 36px; text-align: center; margin-bottom: 12px; color: #333; }
+        .carrieres-intro { text-align: center; color: #666; font-size: 16px; margin-bottom: 50px; line-height: 1.7; max-width: 700px; margin-left: auto; margin-right: auto; }
+
+        .career-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 35px; }
+
+        .career-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.09);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .career-card:hover { transform: translateY(-6px); box-shadow: 0 10px 35px rgba(0,0,0,0.15); }
+
+        .career-card-header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #cc0000 100%);
+            padding: 30px 25px 20px;
+            color: white;
+            position: relative;
+        }
+        .career-card-header .career-icon { font-size: 42px; display: block; margin-bottom: 10px; }
+        .career-card-header h3 { font-size: 22px; font-weight: bold; margin-bottom: 4px; }
+        .career-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 3px 10px;
+            border-radius: 20px;
+        }
+
+        .career-card-body { padding: 25px; flex: 1; display: flex; flex-direction: column; }
+        .career-desc { font-size: 14px; color: #555; line-height: 1.7; margin-bottom: 18px; }
+
+        .career-missions { margin-bottom: 18px; }
+        .career-missions h4 { font-size: 13px; font-weight: bold; color: #cc0000; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+        .career-missions ul { list-style: none; padding: 0; }
+        .career-missions ul li { font-size: 13px; color: #666; padding: 4px 0; padding-left: 18px; position: relative; }
+        .career-missions ul li::before { content: "▸"; position: absolute; left: 0; color: #cc0000; }
+
+        .career-conditions { background: #f9f9f9; border-radius: 6px; padding: 12px 15px; margin-bottom: 20px; }
+        .career-conditions h4 { font-size: 12px; font-weight: bold; color: #888; text-transform: uppercase; margin-bottom: 8px; }
+        .career-conditions p { font-size: 13px; color: #666; line-height: 1.6; }
+
+        .career-apply-btn {
+            display: block;
+            width: 100%;
+            background: #cc0000;
+            color: white;
+            border: none;
+            padding: 13px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-align: center;
+            margin-top: auto;
+        }
+        .career-apply-btn:hover { background: #990000; }
+
+        /* Contact Section */
+        .contact-section { padding: 60px 0; max-width: 900px; margin: 0 auto; }
+        .contact-section h2 { font-size: 36px; text-align: center; margin-bottom: 15px; color: #333; }
+        .contact-intro { text-align: center; color: #666; font-size: 16px; margin-bottom: 50px; line-height: 1.7; }
+        .contact-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .contact-card {
+            background: white; border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 40px 30px; text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative; overflow: hidden;
+        }
+        .contact-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; }
+        .contact-card.ville::before { background: #5865F2; }
+        .contact-card.defense::before { background: #cc0000; }
+        .contact-card:hover { transform: translateY(-6px); box-shadow: 0 10px 35px rgba(0,0,0,0.15); }
+        .contact-card-icon { font-size: 52px; margin-bottom: 18px; display: block; }
+        .contact-card h3 { font-size: 22px; font-weight: bold; margin-bottom: 10px; color: #333; }
+        .contact-card p { font-size: 14px; color: #777; line-height: 1.7; margin-bottom: 28px; }
+        .contact-badge { display: inline-block; background: #f0f0f0; color: #555; font-size: 11px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 20px; margin-bottom: 20px; }
+        .discord-btn {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 13px 28px; border-radius: 6px; font-weight: bold;
+            font-size: 15px; text-decoration: none; transition: all 0.3s; color: white;
+        }
+        .discord-btn svg { width: 22px; height: 22px; fill: white; flex-shrink: 0; }
+        .discord-btn.ville { background: #5865F2; }
+        .discord-btn.ville:hover { background: #4752c4; transform: translateY(-2px); box-shadow: 0 5px 20px rgba(88,101,242,0.4); }
+        .discord-btn.defense { background: #cc0000; }
+        .discord-btn.defense:hover { background: #990000; transform: translateY(-2px); box-shadow: 0 5px 20px rgba(204,0,0,0.4); }
+
+        /* Recruitment Section */
+        .recruitment-section {
+            padding: 60px 0;
+        }
+
+        .recruitment-section h2 {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .recruitment-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .positions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .position-card {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .position-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .position-category {
+            display: inline-block;
+            background: #f0f0f0;
+            color: #cc0000;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .position-card h3 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .position-card p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .position-requirements {
+            font-size: 13px;
+            color: #777;
+            margin-bottom: 15px;
+            line-height: 1.8;
+            border-left: 3px solid #cc0000;
+            padding-left: 12px;
+        }
+
+        .recruit-btn {
+            width: 100%;
+            background: #cc0000;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 14px;
+        }
+
+        .recruit-btn:hover {
+            background: #990000;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .home-page h1 {
+                font-size: 32px;
+            }
+
+            .home-page .subtitle {
+                font-size: 16px;
+            }
+
+            .missions-section h2,
+            .form-section h2,
+            .recruitment-section h2 {
+                font-size: 28px;
+            }
+
+            .nav-menu {
+                gap: 15px;
+            }
+
+            .nav-menu a {
+                font-size: 12px;
+            }
+
+            .missions-grid,
+            .positions-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .home-video {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav>
+            <a href="#home" class="nav-logo" onclick="showPage('home'); return false;" data-page="home">
+                <img src="https://i.imgur.com/ITkSOJY.png" alt="Logo">
+                LA DÉFENSE
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#home" onclick="showPage('home'); return false;" class="nav-link" data-page="home">Accueil</a></li>
+                <li><a href="#plan-vol" onclick="showPage('plan-vol'); return false;" class="nav-link" data-page="plan-vol">Plan de Vol</a></li>
+                <li><a href="#ppl" onclick="showPage('ppl'); return false;" class="nav-link" data-page="ppl">Permis PPL</a></li>
+                <li><a href="#recrutement" onclick="showPage('recrutement'); return false;" class="nav-link" data-page="recrutement">Recrutement</a></li>
+                <li><a href="#carrieres" onclick="showPage('carrieres'); return false;" class="nav-link" data-page="carrieres">Carrières</a></li>
+                <li><a href="#contact" onclick="showPage('contact'); return false;" class="nav-link" data-page="contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <!-- HOME PAGE -->
+        <div class="page active" id="home">
+            <div class="home-page">
+                <img src="https://i.imgur.com/ITkSOJY.png" alt="Logo" class="home-logo">
+                <h1>LA DÉFENSE</h1>
+                <p class="subtitle">Liège City - Votre futur. Notre mission.</p>
+
+                <div class="home-video">
+                    <iframe src="https://youtu.be/cPdrO6b8_Z0" allowfullscreen=""></iframe>
+                </div>
+
+                <div class="home-description">
+                    <p>La Défense, votre futur. Notre mission.</p>
+                    <p style="margin-top: 20px;">La Défense belge protège l'avenir de nos citoyens en assurant leur sécurité au quotidien, en Belgique comme à l'étranger.</p>
+                    <p style="margin-top: 20px;">À travers des missions internationales, un soutien à la nation en cas de crise, et la défense du territoire, nos forces terrestres, aériennes, navales et médicales contribuent à la paix, à la stabilité et à la protection collective.</p>
+                </div>
+
+                <button class="cta-button" onclick="showPage('recrutement')">S'Engager</button>
+            </div>
+
+            <!-- Missions on Home -->
+            <div class="missions-section">
+                <h2>Nos Missions</h2>
+                <div class="missions-grid">
+                    <div class="mission-card">
+                        <h3>Composante Terre</h3>
+                        <p>Épine dorsale de l'armée de terre, le soldat d'infanterie assure la défense du territoire national et participe aux opérations terrestres en Belgique comme à l'étranger.</p>
+                    </div>
+                    <div class="mission-card">
+                        <h3>Composante Médicale</h3>
+                        <p>Le médecin militaire assure la santé des troupes sur le terrain et en garnison. Il intervient en zone de conflit pour soigner et stabiliser les blessés de guerre.</p>
+                    </div>
+                    <div class="mission-card">
+                        <h3>Composante Air</h3>
+                        <p>Maître du ciel, le pilote de chasse assure la supériorité aérienne de la Belgique. Précision, sang-froid et réflexes sont ses armes au quotidien.</p>
+                    </div>
+                    <div class="mission-card">
+                        <h3>FS Sniper</h3>
+                        <p>Tireur d’élite des forces spéciales, missions de précision, reconnaissance et neutralisation à longue distance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PLAN DE VOL PAGE -->
+        <div class="page" id="plan-vol">
+            <div class="form-section">
+                <h2>✈️ Plan de Vol</h2>
+
+                <div id="flight-messages"></div>
+
+                <div class="form-wrapper">
+                    <form id="flightForm">
+                        <h3 style="margin-bottom: 20px; color: #cc0000;">Informations Pilotes</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Pilote (Nom + Prénom)</label>
+                                <input type="text" id="pilot" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Co-Pilote (Nom + Prénom)</label>
+                                <input type="text" id="copilot">
+                            </div>
+                        </div>
+
+                        <h3 style="margin-top: 25px; margin-bottom: 20px; color: #cc0000;">Informations de l'Aéronef</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Transpondeur de l'aéronef</label>
+                                <input type="text" id="transponder" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Modèle de l'aéronef</label>
+                                <input type="text" id="model" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Nombre de personnes à bord</label>
+                                <input type="number" id="passengers-count" min="1" value="1" required>
+                            </div>
+                        </div>
+
+                        <h3 style="margin-top: 25px; margin-bottom: 20px; color: #cc0000;">Informations de Vol</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Date du Vol</label>
+                                <input type="date" id="flight-date" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Heure de Départ</label>
+                                <input type="time" id="departure-time" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Heure d'Arrivée</label>
+                                <input type="time" id="arrival-time" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Lieu de Départ</label>
+                                <input type="text" id="departure-location" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Lieu d'Arrivée</label>
+                                <input type="text" id="arrival-location" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Type d'Avion</label>
+                                <select id="aircraft-type" required>
+                                    <option value="">Sélectionnez...</option>
+                                    <option value="helicopter">Hélicoptère</option>
+                                    <option value="fighter">Avion de Chasse</option>
+                                    <option value="commercial">Transport / Commercial</option>
+                                    <option value="other">Autre</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin-top: 25px;">
+                            <label>Notes Supplémentaires / Noms Personnes à Bord</label>
+                            <textarea id="notes"></textarea>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit">Enregistrer le Plan de Vol</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- RECRUTEMENT PAGE -->
+        <div class="page" id="recrutement">
+            <div class="recruitment-section">
+                <h2>Rejoignez La Défense</h2>
+                <div class="recruitment-intro">
+                    <p>La Défense belge recrute des professionnels motivés et passionnés pour rejoindre ses rangs. 
+                    Si vous cherchez une carrière enrichissante au service de la nation, nous vous accueillons!</p>
+                </div>
+
+                <div class="positions-grid">
+                    <div class="position-card">
+                        <div class="position-category">Terre</div>
+                        <h3>Soldat d'Infanterie</h3>
+                        <p>Défenseurs du territoire, opérations tactiques et patrouille.</p>
+                        <div class="position-requirements">
+                            ✓ Diplôme secondaire<br>
+                            ✓ Bon état physique<br>
+                            ✓ 18-32 ans
+                        </div>
+                        <button class="recruit-btn" onclick="selectPosition('Soldat d\'Infanterie')">Candidater</button>
+                    </div>
+
+                    <div class="position-card">
+                        <div class="position-category">Air</div>
+                        <h3>Pilote de Chasse</h3>
+                        <p>Opérations aériennes, supériorité aérienne et mission de soutien.</p>
+                        <div class="position-requirements">
+                            ✓ Diplôme scientifique<br>
+                            ✓ Permis de pilote<br>
+                            ✓ 20-35 ans
+                        </div>
+                        <button class="recruit-btn" onclick="selectPosition('Pilote de Chasse')">Candidater</button>
+                    </div>
+
+                    <div class="position-card">
+                        <div class="position-category">Forces Spéciales</div>
+                        <h3>FS Sniper</h3>
+                        <p>Tireur d’élite des forces spéciales, missions de précision, reconnaissance et neutralisation à longue distance.</p>
+                        <div class="position-requirements">
+                            ✓ Expérience militaire requise<br>
+                            ✓ Excellence au tir<br>
+                            ✓ 22-38 ans
+                        </div>
+                        <button class="recruit-btn" onclick="selectPosition('FS Sniper')">Candidater</button>
+                    </div>
+
+                    <div class="position-card">
+                        <div class="position-category">Médicale</div>
+                        <h3>Médecin Militaire</h3>
+                        <p>Soutien médical opérationnel et assistance sanitaire.</p>
+                        <div class="position-requirements">
+                            ✓ Diplôme de médecin<br>
+                            ✓ Permis d'exercer<br>
+                            ✓ 25-45 ans
+                        </div>
+                        <button class="recruit-btn" onclick="selectPosition('Médecin Militaire')">Candidater</button>
+                    </div>
+
+                    <div class="position-card">
+                        <div class="position-category">Technique</div>
+                        <h3>Technicien IT</h3>
+                        <p>Support informatique, cybersécurité et systèmes d'information.</p>
+                        <div class="position-requirements">
+                            ✓ Formation IT/Informatique<br>
+                            ✓ Compétences réseau<br>
+                            ✓ 19-40 ans
+                        </div>
+                        <button class="recruit-btn" onclick="selectPosition('Technicien IT')">Candidater</button>
+                    </div>
+
+                    <div class="position-card">
+                        <div class="position-category">Logistique</div>
+                        <h3>Responsable Logistique</h3>
+                        <p>Gestion des stocks, approvisionnement et planification.</p>
+                        <div class="position-requirements">
+                            ✓ Expérience logistique<br>
+                            ✓ Gestion d'équipe<br>
+                            ✓ 25-45 ans
+                        </div>
+                        <button class="recruit-btn" onclick="selectPosition('Responsable Logistique')">Candidater</button>
+                    </div>
+                </div>
+
+                <!-- Formulaire de Candidature -->
+                <div class="form-section" id="recruitment-form" style="display: none;">
+                    <h2>Formulaire de Candidature</h2>
+
+                    <div id="recruitment-messages"></div>
+
+                    <div class="form-wrapper">
+                        <form id="recruitmentForm">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label>Poste Souhaité *</label>
+                                    <input type="text" id="position" readonly style="cursor: not-allowed; opacity: 0.7;">
+                                </div>
+                                <div class="form-group">
+                                    <label>Nom Complet *</label>
+                                    <input type="text" id="fullname" required>
+                                </div>
+                            </div>
+
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label>Email *</label>
+                                    <input type="email" id="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Téléphone *</label>
+                                    <input type="tel" id="phone" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Expérience Professionnelle</label>
+                                <textarea id="experience"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Pourquoi rejoindre La Défense?</label>
+                                <textarea id="motivation"></textarea>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit">Envoyer ma Candidature</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARRIERES PAGE -->
+        <div class="page" id="carrieres">
+            <div class="carrieres-section">
+                <h2>🎖️ Nos Carrières</h2>
+                <p class="carrieres-intro">
+                    Découvrez les métiers qui font La Défense. Chaque rôle est essentiel à notre mission.<br>
+                    Trouvez votre vocation et rejoignez nos rangs.
+                </p>
+
+                <div class="career-cards">
+
+                    <!-- Soldat d'Infanterie -->
+                    <div class="career-card">
+                        <div class="career-card-header">
+                            <span class="career-icon">🪖</span>
+                            <span class="career-badge">Composante Terre</span>
+                            <h3>Soldat d'Infanterie</h3>
+                        </div>
+                        <div class="career-card-body">
+                            <p class="career-desc">Épine dorsale de l'armée de terre, le soldat d'infanterie assure la défense du territoire national et participe aux opérations terrestres en Belgique comme à l'étranger.</p>
+                            <div class="career-missions">
+                                <h4>Missions principales</h4>
+                                <ul>
+                                    <li>Patrouilles et sécurisation de zones</li>
+                                    <li>Opérations tactiques et assaut</li>
+                                    <li>Soutien aux forces alliées</li>
+                                    <li>Gestion de crise et maintien de l'ordre</li>
+                                </ul>
+                            </div>
+                            <div class="career-conditions">
+                                <h4>Conditions requises</h4>
+                                <p>✓ Diplôme secondaire &nbsp;|&nbsp; ✓ Bonne condition physique &nbsp;|&nbsp; ✓ 18-32 ans</p>
+                            </div>
+                            <button class="career-apply-btn" onclick="goToRecruit('Soldat d\'Infanterie')">✉️ Candidater à ce poste</button>
+                        </div>
+                    </div>
+
+                    <!-- Pilote de Chasse -->
+                    <div class="career-card">
+                        <div class="career-card-header">
+                            <span class="career-icon">✈️</span>
+                            <span class="career-badge">Composante Air</span>
+                            <h3>Pilote de Chasse</h3>
+                        </div>
+                        <div class="career-card-body">
+                            <p class="career-desc">Maître du ciel, le pilote de chasse assure la supériorité aérienne de la Belgique. Précision, sang-froid et réflexes sont ses armes au quotidien.</p>
+                            <div class="career-missions">
+                                <h4>Missions principales</h4>
+                                <ul>
+                                    <li>Interception et supériorité aérienne</li>
+                                    <li>Appui aérien rapproché (CAS)</li>
+                                    <li>Missions de reconnaissance aérienne</li>
+                                    <li>Escorte et protection de convois</li>
+                                </ul>
+                            </div>
+                            <div class="career-conditions">
+                                <h4>Conditions requises</h4>
+                                <p>✓ Diplôme scientifique &nbsp;|&nbsp; ✓ Permis pilote &nbsp;|&nbsp; ✓ 20-35 ans</p>
+                            </div>
+                            <button class="career-apply-btn" onclick="goToRecruit('Pilote de Chasse')">✉️ Candidater à ce poste</button>
+                        </div>
+                    </div>
+
+                    <!-- FS Sniper -->
+                    <div class="career-card">
+                        <div class="career-card-header">
+                            <span class="career-icon">🎯</span>
+                            <span class="career-badge">Forces Spéciales</span>
+                            <h3>FS Sniper</h3>
+                        </div>
+                        <div class="career-card-body">
+                            <p class="career-desc">Tireur d'élite des forces spéciales, le FS Sniper opère en milieu hostile avec discrétion absolue. Patience, précision et autonomie définissent ce profil d'exception.</p>
+                            <div class="career-missions">
+                                <h4>Missions principales</h4>
+                                <ul>
+                                    <li>Tirs de précision à longue distance</li>
+                                    <li>Reconnaissance et surveillance discrète</li>
+                                    <li>Neutralisation de cibles à haute valeur</li>
+                                    <li>Soutien des équipes d'intervention</li>
+                                </ul>
+                            </div>
+                            <div class="career-conditions">
+                                <h4>Conditions requises</h4>
+                                <p>✓ Expérience militaire &nbsp;|&nbsp; ✓ Excellence au tir &nbsp;|&nbsp; ✓ 22-38 ans</p>
+                            </div>
+                            <button class="career-apply-btn" onclick="goToRecruit('FS Sniper')">✉️ Candidater à ce poste</button>
+                        </div>
+                    </div>
+
+                    <!-- Médecin Militaire -->
+                    <div class="career-card">
+                        <div class="career-card-header">
+                            <span class="career-icon">⚕️</span>
+                            <span class="career-badge">Composante Médicale</span>
+                            <h3>Médecin Militaire</h3>
+                        </div>
+                        <div class="career-card-body">
+                            <p class="career-desc">Le médecin militaire assure la santé des troupes sur le terrain et en garnison. Il intervient en zone de conflit pour soigner et stabiliser les blessés de guerre.</p>
+                            <div class="career-missions">
+                                <h4>Missions principales</h4>
+                                <ul>
+                                    <li>Soins médicaux d'urgence en opération</li>
+                                    <li>Triage et évacuation sanitaire</li>
+                                    <li>Suivi médical des effectifs</li>
+                                    <li>Formation premiers secours aux soldats</li>
+                                </ul>
+                            </div>
+                            <div class="career-conditions">
+                                <h4>Conditions requises</h4>
+                                <p>✓ Diplôme de médecin &nbsp;|&nbsp; ✓ Permis d'exercer &nbsp;|&nbsp; ✓ 25-45 ans</p>
+                            </div>
+                            <button class="career-apply-btn" onclick="goToRecruit('Médecin Militaire')">✉️ Candidater à ce poste</button>
+                        </div>
+                    </div>
+
+                    <!-- Technicien IT -->
+                    <div class="career-card">
+                        <div class="career-card-header">
+                            <span class="career-icon">💻</span>
+                            <span class="career-badge">Technique</span>
+                            <h3>Technicien IT</h3>
+                        </div>
+                        <div class="career-card-body">
+                            <p class="career-desc">Dans une armée moderne, la guerre se mène aussi dans le cyberespace. Le technicien IT protège les systèmes d'information et garantit la continuité des communications.</p>
+                            <div class="career-missions">
+                                <h4>Missions principales</h4>
+                                <ul>
+                                    <li>Cybersécurité et protection des réseaux</li>
+                                    <li>Maintenance des systèmes d'information</li>
+                                    <li>Support technique opérationnel</li>
+                                    <li>Déploiement d'infrastructures en terrain</li>
+                                </ul>
+                            </div>
+                            <div class="career-conditions">
+                                <h4>Conditions requises</h4>
+                                <p>✓ Formation IT &nbsp;|&nbsp; ✓ Compétences réseau &nbsp;|&nbsp; ✓ 19-40 ans</p>
+                            </div>
+                            <button class="career-apply-btn" onclick="goToRecruit('Technicien IT')">✉️ Candidater à ce poste</button>
+                        </div>
+                    </div>
+
+                    <!-- Responsable Logistique -->
+                    <div class="career-card">
+                        <div class="career-card-header">
+                            <span class="career-icon">📦</span>
+                            <span class="career-badge">Logistique</span>
+                            <h3>Responsable Logistique</h3>
+                        </div>
+                        <div class="career-card-body">
+                            <p class="career-desc">Sans logistique, pas de mission. Le responsable logistique organise l'approvisionnement, la chaîne de transport et la gestion des stocks pour maintenir les unités opérationnelles.</p>
+                            <div class="career-missions">
+                                <h4>Missions principales</h4>
+                                <ul>
+                                    <li>Planification et gestion des stocks</li>
+                                    <li>Coordination des transports militaires</li>
+                                    <li>Approvisionnement en matériel et vivres</li>
+                                    <li>Encadrement des équipes logistiques</li>
+                                </ul>
+                            </div>
+                            <div class="career-conditions">
+                                <h4>Conditions requises</h4>
+                                <p>✓ Expérience logistique &nbsp;|&nbsp; ✓ Gestion d'équipe &nbsp;|&nbsp; ✓ 25-45 ans</p>
+                            </div>
+                            <button class="career-apply-btn" onclick="goToRecruit('Responsable Logistique')">✉️ Candidater à ce poste</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- PPL PAGE -->
+        <div class="page" id="ppl">
+            <div class="form-section">
+                <h2>🛩️ Permis de Vol PPL</h2>
+
+                <div id="ppl-messages"></div>
+
+                <div class="form-wrapper">
+                    <p style="text-align:center; color:#555; margin-bottom:30px; font-size:15px; line-height:1.7;">
+                        Le <strong>Permis de Pilote Privé (PPL)</strong> est la licence officielle permettant de piloter un aéronef au sein de La Défense.
+                        Remplissez ce formulaire pour prendre rendez-vous avec un instructeur et démarrer votre parcours de certification.
+                    </p>
+
+                    <form id="pplForm">
+                        <h3 style="margin-bottom: 20px; color: #cc0000;">Informations du Candidat</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Nom Complet *</label>
+                                <input type="text" id="ppl-fullname" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Pseudo In-Game *</label>
+                                <input type="text" id="ppl-pseudo" required>
+                            </div>
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Email *</label>
+                                <input type="email" id="ppl-email" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Discord (pseudo#0000) *</label>
+                                <input type="text" id="ppl-discord" required>
+                            </div>
+                        </div>
+
+                        <h3 style="margin-top: 25px; margin-bottom: 20px; color: #cc0000;">Rendez-vous Souhaité</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Date souhaitée *</label>
+                                <input type="date" id="ppl-date" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Heure souhaitée *</label>
+                                <input type="time" id="ppl-time" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Type d'examen *</label>
+                            <select id="ppl-type" required>
+                                <option value="">Sélectionnez...</option>
+                                <option value="Théorique">Examen Théorique</option>
+                                <option value="Pratique">Examen Pratique (vol avec instructeur)</option>
+                                <option value="Complet">Formation Complète (théorie + pratique)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Expérience de pilotage (heures de vol estimées)</label>
+                            <input type="text" id="ppl-experience" placeholder="Ex: 5h en hélicoptère, 2h en avion de chasse...">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Message / Informations complémentaires</label>
+                            <textarea id="ppl-message" placeholder="Précisions sur votre demande, disponibilités alternatives..."></textarea>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit">📅 Prendre Rendez-vous</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONTACT PAGE -->
+        <div class="page" id="contact">
+            <div class="contact-section">
+                <h2>📡 Nous Contacter</h2>
+                <p class="contact-intro">
+                    Rejoignez nos serveurs Discord pour rester informé, poser vos questions<br>
+                    et intégrer la communauté de Liège City.
+                </p>
+                <div class="contact-cards">
+                    <div class="contact-card ville">
+                        <span class="contact-card-icon">🏙️</span>
+                        <span class="contact-badge">Communauté</span>
+                        <h3>Discord Général</h3>
+                        <p>Serveur principal de <strong>Liège City WL</strong>.<br>Actualités, événements, discussions générales et vie de la ville.</p>
+                        <a href="https://discord.gg/LIEN_VILLE" target="_blank" class="discord-btn ville">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+                            Rejoindre le Discord Ville
+                        </a>
+                    </div>
+                    <div class="contact-card defense">
+                        <span class="contact-card-icon">🪖</span>
+                        <span class="contact-badge">Institution</span>
+                        <h3>Discord La Défense</h3>
+                        <p>Serveur officiel de <strong>La Défense Belge</strong>.<br>Opérations, recrutement, briefings et communications internes.</p>
+                        <a href="https://discord.gg/LIEN_DEFENSE" target="_blank" class="discord-btn defense">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+                            Rejoindre le Discord Défense
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+    <footer>
+        <p>© La Défense Belge - Tous droits réservés (Liège City WL - Maxime Vandel)</p>
+    </footer>
+
+    <script>
+        // ================================================================================
+        // 🔧 CONFIGURATION WEBHOOKS DISCORD
+        // ================================================================================
+
+        // Webhook Plan de Vol
+        const WEBHOOK_PLAN_DE_VOL = 'https://discord.com/api/webhooks/1512935140190457927/pvSJojLNLXXr7zabL7bOMqobnfggjQMTi4H40rzIiYpJAUI1ylPNpWXeEUUsopb638Mn';
+
+        // ⚠️ Webhook unique pour toutes les candidatures (recrutement)
+        // Remplace cette URL par ton webhook Discord souhaité
+        const WEBHOOK_RECRUTEMENT = 'https://discord.com/api/webhooks/1503424568671600652/I0c8kO-gNroK1p0Dg7WSOJpn13jSt80uEa7UrtCoLqknFwaIJUDRbt4VQJRIX-KC5kTz';
+
+        // ⚠️ Webhook pour les rendez-vous Permis de Vol PPL
+        // Remplace cette URL par ton webhook Discord souhaité
+        const WEBHOOK_PPL = 'https://discord.com/api/webhooks/1513166161779495033/0RMeseszcuY_wpIFfMvZ_YS-B5t6Amzmv14QEM6Q9K9zPmT3B2E4pJ-tMOGKHB67b_zB';
+        // ────────────────────────────────────────────────────────────────────────────────
+
+        let selectedPosition = null;
+
+        // Afficher/Masquer les pages
+        const VALID_PAGES = ['home', 'plan-vol', 'ppl', 'recrutement', 'carrieres', 'contact'];
+
+        function showPage(pageId, pushState) {
+            if (!VALID_PAGES.includes(pageId)) pageId = 'home';
+
+            // Masquer toutes les pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Masquer tous les liens nav
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Afficher la page sélectionnée
+            document.getElementById(pageId).classList.add('active');
+
+            // Marquer le lien nav actif
+            document.querySelectorAll('.nav-link').forEach(link => {
+                if (link.getAttribute('data-page') === pageId) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Mettre à jour le hash dans l'URL (sans recharger la page)
+            if (pushState !== false) {
+                history.pushState({ page: pageId }, '', '#' + pageId);
+            }
+
+            // Scroll vers le haut
+            window.scrollTo(0, 0);
+        }
+
+        // Gérer le bouton retour/avant du navigateur
+        window.addEventListener('popstate', function(e) {
+            const pageId = (e.state && e.state.page) || getPageFromHash();
+            showPage(pageId, false);
+        });
+
+        function getPageFromHash() {
+            const hash = window.location.hash.replace('#', '');
+            return VALID_PAGES.includes(hash) ? hash : 'home';
+        }
+
+        // Initialiser
+        document.addEventListener('DOMContentLoaded', function() {
+            // Date d'aujourd'hui
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('flight-date').value = today;
+            document.getElementById('ppl-date').value = today;
+
+            // Formulaire de vol
+            document.getElementById('flightForm').addEventListener('submit', submitFlightForm);
+
+            // Formulaire de recrutement
+            document.getElementById('recruitmentForm').addEventListener('submit', submitRecruitmentForm);
+
+            // Formulaire PPL
+            document.getElementById('pplForm').addEventListener('submit', submitPplForm);
+
+            // Lire le hash à l'arrivée (refresh ou lien direct)
+            const initialPage = getPageFromHash();
+            history.replaceState({ page: initialPage }, '', '#' + initialPage);
+            showPage(initialPage, false);
+        });
+
+        // Soumettre le formulaire de vol
+        function submitFlightForm(e) {
+            e.preventDefault();
+
+            const formData = {
+                pilot: document.getElementById('pilot').value,
+                copilot: document.getElementById('copilot').value,
+                transponder: document.getElementById('transponder').value,
+                model: document.getElementById('model').value,
+                passengersCount: document.getElementById('passengers-count').value,
+                aircraftType: document.getElementById('aircraft-type').value,
+                date: document.getElementById('flight-date').value,
+                departureTime: document.getElementById('departure-time').value,
+                arrivalTime: document.getElementById('arrival-time').value,
+                departureLocation: document.getElementById('departure-location').value,
+                arrivalLocation: document.getElementById('arrival-location').value,
+                notes: document.getElementById('notes').value,
+                timestamp: new Date().toISOString()
+            };
+
+            // Créer le message Discord
+            const discordMessage = {
+                content: '📋 **NOUVEAU PLAN DE VOL**',
+                embeds: [{
+                    color: 13369344,
+                    title: '✈️ Plan de Vol Enregistré',
+                    description: `Nouveau plan de vol créé par **${formData.pilot}**`,
+                    fields: [
+                        { name: '👨‍✈️ Pilote', value: `${formData.pilot}${formData.copilot ? '\n**Co-pilote:** ' + formData.copilot : ''}`, inline: true },
+                        { name: '🛩️ Aéronef', value: `${formData.model}\n**Transpondeur:** ${formData.transponder}`, inline: true },
+                        { name: '📅 Date', value: formData.date, inline: true },
+                        { name: '🕐 Horaires', value: `**Départ:** ${formData.departureTime}\n**Arrivée:** ${formData.arrivalTime}`, inline: true },
+                        { name: '📍 Trajet', value: `**De:** ${formData.departureLocation}\n**Vers:** ${formData.arrivalLocation}`, inline: true },
+                        { name: '🛫 Type', value: formatAircraftType(formData.aircraftType), inline: true }
+                    ],
+                    footer: { text: 'La Défense - Plan de Vol' },
+                    timestamp: new Date().toISOString()
+                }]
+            };
+
+            // Envoyer à Discord (webhook Plan de Vol)
+            fetch(WEBHOOK_PLAN_DE_VOL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(discordMessage)
+            })
+            .then(response => {
+                if (response.ok) {
+                    showMessage('✅ Plan de vol enregistré avec succès!', 'success', 'flight-messages');
+                    document.getElementById('flightForm').reset();
+                    const today = new Date().toISOString().split('T')[0];
+                    document.getElementById('flight-date').value = today;
+                } else {
+                    throw new Error('Erreur Discord');
+                }
+            })
+            .catch(error => {
+                console.error('Erreur:', error);
+                showMessage('⚠️ Erreur lors de l\'enregistrement. Vérifiez votre webhook.', 'error', 'flight-messages');
+            });
+        }
+
+        // Navigation depuis Carrières vers Recrutement
+        function goToRecruit(position) {
+            showPage('recrutement');
+            // Sélectionner le poste après un court délai
+            setTimeout(() => selectPosition(position), 100);
+        }
+
+        // Sélectionner un poste de recrutement
+        function selectPosition(position) {
+            selectedPosition = position;
+            document.getElementById('position').value = position;
+            document.getElementById('recruitment-form').style.display = 'block';
+            document.getElementById('fullname').focus();
+            document.getElementById('recruitment-form').scrollIntoView({behavior: 'smooth'});
+        }
+
+        // Soumettre le formulaire de recrutement
+        function submitRecruitmentForm(e) {
+            e.preventDefault();
+
+            const formData = {
+                position: document.getElementById('position').value,
+                fullname: document.getElementById('fullname').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                experience: document.getElementById('experience').value,
+                motivation: document.getElementById('motivation').value,
+                timestamp: new Date().toISOString()
+            };
+
+            // Créer le message Discord
+            const discordMessage = {
+                content: '👥 **NOUVELLE CANDIDATURE**',
+                embeds: [{
+                    color: 65280,
+                    title: '✅ Nouvelle Candidature Reçue',
+                    description: `Candidature de **${formData.fullname}** pour le poste de **${formData.position}**`,
+                    fields: [
+                        { name: '👤 Nom', value: formData.fullname, inline: true },
+                        { name: '📧 Email', value: formData.email, inline: true },
+                        { name: '📱 Téléphone', value: formData.phone, inline: true },
+                        { name: '💼 Poste', value: formData.position, inline: false },
+                        { name: '📝 Expérience', value: formData.experience || 'Non spécifiée', inline: false },
+                        { name: '💭 Motivation', value: formData.motivation || 'Non spécifiée', inline: false }
+                    ],
+                    footer: { text: 'La Défense - Recrutement' },
+                    timestamp: new Date().toISOString()
+                }]
+            };
+
+            // Webhook unique pour toutes les candidatures
+            const webhookUrl = WEBHOOK_RECRUTEMENT;
+
+            // Envoyer à Discord (webhook du métier)
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(discordMessage)
+            })
+            .then(response => {
+                if (response.ok) {
+                    showMessage('✅ Candidature envoyée avec succès!', 'success', 'recruitment-messages');
+                    document.getElementById('recruitmentForm').reset();
+                    document.getElementById('position').value = '';
+                    selectedPosition = null;
+                    document.getElementById('recruitment-form').style.display = 'none';
+                    window.scrollTo(0, 0);
+                } else {
+                    throw new Error('Erreur Discord');
+                }
+            })
+            .catch(error => {
+                console.error('Erreur:', error);
+                showMessage('⚠️ Erreur lors de l\'envoi. Vérifiez votre webhook.', 'error', 'recruitment-messages');
+            });
+        }
+
+        // Afficher les messages
+        function showMessage(message, type, containerId) {
+            const container = document.getElementById(containerId);
+            const messageEl = document.createElement('div');
+            messageEl.className = `message ${type}`;
+            messageEl.textContent = message;
+            container.insertBefore(messageEl, container.firstChild);
+
+            setTimeout(() => {
+                messageEl.remove();
+            }, 4000);
+        }
+
+        // Soumettre le formulaire PPL
+        function submitPplForm(e) {
+            e.preventDefault();
+
+            const formData = {
+                fullname:   document.getElementById('ppl-fullname').value,
+                pseudo:     document.getElementById('ppl-pseudo').value,
+                email:      document.getElementById('ppl-email').value,
+                discord:    document.getElementById('ppl-discord').value,
+                date:       document.getElementById('ppl-date').value,
+                time:       document.getElementById('ppl-time').value,
+                type:       document.getElementById('ppl-type').value,
+                experience: document.getElementById('ppl-experience').value,
+                message:    document.getElementById('ppl-message').value,
+                timestamp:  new Date().toISOString()
+            };
+
+            const discordMessage = {
+                content: '🛩️ **NOUVEAU RENDEZ-VOUS PERMIS PPL**',
+                embeds: [{
+                    color: 3447003,
+                    title: '📋 Demande de Rendez-vous PPL',
+                    description: `**${formData.fullname}** (${formData.pseudo}) souhaite passer son **Permis PPL**.`,
+                    fields: [
+                        { name: '👤 Nom Complet', value: formData.fullname, inline: true },
+                        { name: '🎮 Pseudo In-Game', value: formData.pseudo, inline: true },
+                        { name: '📧 Email', value: formData.email, inline: true },
+                        { name: '💬 Discord', value: formData.discord, inline: true },
+                        { name: '📅 Date souhaitée', value: formData.date, inline: true },
+                        { name: '🕐 Heure souhaitée', value: formData.time, inline: true },
+                        { name: '📝 Type d\'examen', value: formData.type, inline: false },
+                        { name: '✈️ Expérience de vol', value: formData.experience || 'Non renseignée', inline: false },
+                        { name: '💬 Message', value: formData.message || 'Aucun message', inline: false }
+                    ],
+                    footer: { text: 'La Défense - Permis de Vol PPL' },
+                    timestamp: new Date().toISOString()
+                }]
+            };
+
+            fetch(WEBHOOK_PPL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(discordMessage)
+            })
+            .then(response => {
+                if (response.ok) {
+                    showMessage('✅ Rendez-vous PPL enregistré avec succès!', 'success', 'ppl-messages');
+                    document.getElementById('pplForm').reset();
+                    const today = new Date().toISOString().split('T')[0];
+                    document.getElementById('ppl-date').value = today;
+                } else {
+                    throw new Error('Erreur Discord');
+                }
+            })
+            .catch(error => {
+                console.error('Erreur:', error);
+                showMessage('⚠️ Erreur lors de l\'envoi. Vérifiez le webhook PPL.', 'error', 'ppl-messages');
+            });
+        }
+
+        // Formater le type d'aéronef
+        function formatAircraftType(type) {
+            const types = {
+                'helicopter': 'Hélicoptère 🚁',
+                'fighter': 'Avion de Chasse 🛩️',
+                'commercial': 'Transport / Commercial ✈️',
+                'other': 'Autre'
+            };
+            return types[type] || type;
+        }
+    </script>
+</body>
+</html>
