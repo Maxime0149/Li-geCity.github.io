@@ -599,6 +599,7 @@
                 <li><a href="#ppl" onclick="showPage('ppl'); return false;" class="nav-link" data-page="ppl">Permis PPL</a></li>
                 <li><a href="#recrutement" onclick="showPage('recrutement'); return false;" class="nav-link" data-page="recrutement">Recrutement</a></li>
                 <li><a href="#carrieres" onclick="showPage('carrieres'); return false;" class="nav-link" data-page="carrieres">Carrières</a></li>
+                <li><a href="#rdv" onclick="showPage('rdv'); return false;" class="nav-link" data-page="rdv">Rendez-vous</a></li>
                 <li><a href="#contact" onclick="showPage('contact'); return false;" class="nav-link" data-page="contact">Contact</a></li>
             </ul>
         </nav>
@@ -613,7 +614,7 @@
                 <p class="subtitle">Liège City - Votre futur. Notre mission.</p>
 
                 <div class="home-video">
-                    <iframe src="https://youtu.be/cPdrO6b8_Z0" allowfullscreen=""></iframe>
+                    <iframe src="https://www.youtube.com/embed/l5mtdWBNXPQ?autoplay=1&mute=1&loop=1&playlist=l5mtdWBNXPQ&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3" allowfullscreen=""></iframe>
                 </div>
 
                 <div class="home-description">
@@ -1113,6 +1114,91 @@
             </div>
         </div>
 
+        <!-- RDV PAGE -->
+        <div class="page" id="rdv">
+            <div class="form-section">
+                <h2>📅 Prendre Rendez-vous</h2>
+
+                <div id="rdv-messages"></div>
+
+                <div class="form-wrapper">
+                    <p style="text-align:center; color:#555; margin-bottom:30px; font-size:15px; line-height:1.7;">
+                        Planifiez un rendez-vous avec <strong>La Défense</strong> selon votre profil.<br>
+                        Remplissez le formulaire ci-dessous et nous reviendrons vers vous rapidement.
+                    </p>
+
+                    <form id="rdvForm">
+                        <h3 style="margin-bottom: 20px; color: #cc0000;">Informations Personnelles</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Nom Complet *</label>
+                                <input type="text" id="rdv-fullname" required placeholder="Prénom Nom">
+                            </div>
+                            <div class="form-group">
+                                <label>Pseudo In-Game *</label>
+                                <input type="text" id="rdv-pseudo" required placeholder="Votre pseudo">
+                            </div>
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Email *</label>
+                                <input type="email" id="rdv-email" required placeholder="exemple@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label>Discord (pseudo#0000) *</label>
+                                <input type="text" id="rdv-discord" required placeholder="pseudo#0000">
+                            </div>
+                        </div>
+
+                        <h3 style="margin-top: 25px; margin-bottom: 20px; color: #cc0000;">Type de Rendez-vous</h3>
+
+                        <div class="form-group">
+                            <label>Catégorie *</label>
+                            <select id="rdv-type" required onchange="toggleCompanyField()">
+                                <option value="">Sélectionnez votre profil...</option>
+                                <option value="Police">🚔 Police</option>
+                                <option value="CHL">🏥 CHL (Centre Hospitalier de Liège)</option>
+                                <option value="Civils">👥 Civils</option>
+                                <option value="Entreprise">🏢 Entreprise / Organisation</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group" id="company-field" style="display:none;">
+                            <label>Nom de l'entreprise / organisation <span style="color:#999; font-weight:normal;">(optionnel)</span></label>
+                            <input type="text" id="rdv-company" placeholder="Ex: Société XYZ, Mairie de Liège...">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Objet du rendez-vous *</label>
+                            <input type="text" id="rdv-subject" required placeholder="Ex: Demande de soutien, Collaboration, Renseignements...">
+                        </div>
+
+                        <h3 style="margin-top: 25px; margin-bottom: 20px; color: #cc0000;">Disponibilités</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Date souhaitée *</label>
+                                <input type="date" id="rdv-date" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Heure souhaitée *</label>
+                                <input type="time" id="rdv-time" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Message / Informations complémentaires</label>
+                            <textarea id="rdv-message" placeholder="Décrivez brièvement le motif de votre demande, vos disponibilités alternatives..."></textarea>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit">📅 Envoyer la Demande</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
         <!-- CONTACT PAGE -->
         <div class="page" id="contact">
             <div class="contact-section">
@@ -1166,12 +1252,14 @@
         // ⚠️ Webhook pour les rendez-vous Permis de Vol PPL
         // Remplace cette URL par ton webhook Discord souhaité
         const WEBHOOK_PPL = 'https://discord.com/api/webhooks/1513166161779495033/0RMeseszcuY_wpIFfMvZ_YS-B5t6Amzmv14QEM6Q9K9zPmT3B2E4pJ-tMOGKHB67b_zB';
+        // ⚠️ Webhook pour les rendez-vous généraux
+        const WEBHOOK_RDV = 'https://discord.com/api/webhooks/1513249630866112713/6V5IgKyWGZ0U_B3ZIFORl7Oma5FKGR6Y-msCFVR_euzkfLn4Rt7igFjpk2mbCXmqnp9-';
         // ────────────────────────────────────────────────────────────────────────────────
 
         let selectedPosition = null;
 
         // Afficher/Masquer les pages
-        const VALID_PAGES = ['home', 'plan-vol', 'ppl', 'recrutement', 'carrieres', 'contact'];
+        const VALID_PAGES = ['home', 'plan-vol', 'ppl', 'recrutement', 'carrieres', 'rdv', 'contact'];
 
         function showPage(pageId, pushState) {
             if (!VALID_PAGES.includes(pageId)) pageId = 'home';
@@ -1231,6 +1319,11 @@
 
             // Formulaire PPL
             document.getElementById('pplForm').addEventListener('submit', submitPplForm);
+
+            // Formulaire RDV
+            document.getElementById('rdvForm').addEventListener('submit', submitRdvForm);
+            const today2 = new Date().toISOString().split('T')[0];
+            document.getElementById('rdv-date').value = today2;
 
             // Lire le hash à l'arrivée (refresh ou lien direct)
             const initialPage = getPageFromHash();
@@ -1447,6 +1540,83 @@
             .catch(error => {
                 console.error('Erreur:', error);
                 showMessage('⚠️ Erreur lors de l\'envoi. Vérifiez le webhook PPL.', 'error', 'ppl-messages');
+            });
+        }
+
+        // Afficher/masquer le champ entreprise selon la catégorie
+        function toggleCompanyField() {
+            const type = document.getElementById('rdv-type').value;
+            const field = document.getElementById('company-field');
+            field.style.display = (type === 'Entreprise') ? 'block' : 'none';
+        }
+
+        // Soumettre le formulaire de rendez-vous
+        function submitRdvForm(e) {
+            e.preventDefault();
+
+            const formData = {
+                fullname: document.getElementById('rdv-fullname').value,
+                pseudo:   document.getElementById('rdv-pseudo').value,
+                email:    document.getElementById('rdv-email').value,
+                discord:  document.getElementById('rdv-discord').value,
+                type:     document.getElementById('rdv-type').value,
+                company:  document.getElementById('rdv-company').value,
+                subject:  document.getElementById('rdv-subject').value,
+                date:     document.getElementById('rdv-date').value,
+                time:     document.getElementById('rdv-time').value,
+                message:  document.getElementById('rdv-message').value,
+                timestamp: new Date().toISOString()
+            };
+
+            const typeEmojis = {
+                'Police': '🚔',
+                'CHL': '🏥',
+                'Civils': '👥',
+                'Entreprise': '🏢'
+            };
+            const emoji = typeEmojis[formData.type] || '📋';
+
+            const discordMessage = {
+                content: `${emoji} **NOUVELLE DEMANDE DE RENDEZ-VOUS**`,
+                embeds: [{
+                    color: 13369344,
+                    title: `📅 Demande de RDV — ${formData.type}`,
+                    description: `**${formData.fullname}** (${formData.pseudo}) souhaite un rendez-vous avec La Défense.`,
+                    fields: [
+                        { name: '👤 Nom Complet', value: formData.fullname, inline: true },
+                        { name: '🎮 Pseudo In-Game', value: formData.pseudo, inline: true },
+                        { name: '📧 Email', value: formData.email, inline: true },
+                        { name: '💬 Discord', value: formData.discord, inline: true },
+                        { name: `${emoji} Catégorie`, value: formData.type + (formData.company ? ` — *${formData.company}*` : ''), inline: true },
+                        { name: '📌 Objet', value: formData.subject, inline: false },
+                        { name: '📅 Date souhaitée', value: formData.date, inline: true },
+                        { name: '🕐 Heure souhaitée', value: formData.time, inline: true },
+                        { name: '💬 Message', value: formData.message || 'Aucun message', inline: false }
+                    ],
+                    footer: { text: 'La Défense — Rendez-vous' },
+                    timestamp: new Date().toISOString()
+                }]
+            };
+
+            fetch(WEBHOOK_RDV, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(discordMessage)
+            })
+            .then(response => {
+                if (response.ok) {
+                    showMessage('✅ Demande de rendez-vous envoyée avec succès!', 'success', 'rdv-messages');
+                    document.getElementById('rdvForm').reset();
+                    document.getElementById('company-field').style.display = 'none';
+                    const today = new Date().toISOString().split('T')[0];
+                    document.getElementById('rdv-date').value = today;
+                } else {
+                    throw new Error('Erreur Discord');
+                }
+            })
+            .catch(error => {
+                console.error('Erreur:', error);
+                showMessage('⚠️ Erreur lors de l\'envoi. Vérifiez le webhook RDV.', 'error', 'rdv-messages');
             });
         }
 
