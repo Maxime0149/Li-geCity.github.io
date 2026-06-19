@@ -779,13 +779,224 @@
         body.dark footer { background: #111; }
         body.dark .message.success { background: #1a3a22; color: #6fcf97; border-color: #2d6a4f; }
         body.dark .message.error { background: #3a1a1a; color: #eb5757; border-color: #7b2d2d; }
+
+        /* ===== ADMIN PANEL ===== */
+        .admin-login-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(4px);
+        }
+        .admin-login-overlay.open { display: flex; }
+        .admin-login-box {
+            background: white;
+            border-radius: 14px;
+            padding: 40px 36px;
+            width: 360px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            text-align: center;
+            position: relative;
+        }
+        body.dark .admin-login-box { background: #1e1e1e; color: #e0e0e0; }
+        .admin-login-box h2 { font-size: 22px; margin-bottom: 8px; color: #cc0000; }
+        .admin-login-box p { font-size: 13px; color: #888; margin-bottom: 24px; }
+        .admin-login-box input {
+            width: 100%;
+            padding: 11px 14px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+            margin-bottom: 16px;
+            font-family: Arial, sans-serif;
+            letter-spacing: 2px;
+        }
+        body.dark .admin-login-box input { background: #2a2a2a; border-color: #444; color: #e0e0e0; }
+        .admin-login-box input:focus { outline: none; border-color: #cc0000; }
+        .admin-login-btn {
+            width: 100%;
+            padding: 12px;
+            background: #cc0000;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .admin-login-btn:hover { background: #990000; }
+        .admin-login-close {
+            position: absolute;
+            top: 14px; right: 18px;
+            background: none; border: none;
+            font-size: 22px; cursor: pointer; color: #aaa;
+        }
+        .admin-login-close:hover { color: #cc0000; }
+        .admin-login-error { color: #cc0000; font-size: 13px; margin-top: -8px; margin-bottom: 12px; display: none; }
+
+        /* Admin Dashboard */
+        .admin-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.85);
+            z-index: 9998;
+            overflow-y: auto;
+            padding: 30px 20px;
+            backdrop-filter: blur(3px);
+        }
+        .admin-overlay.open { display: block; }
+        .admin-panel {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+            overflow: hidden;
+        }
+        body.dark .admin-panel { background: #1a1a1a; }
+        .admin-header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #cc0000 100%);
+            color: white;
+            padding: 28px 35px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .admin-header h1 { font-size: 22px; margin: 0; }
+        .admin-header p { font-size: 13px; opacity: 0.75; margin: 4px 0 0; }
+        .admin-close-btn {
+            background: rgba(255,255,255,0.2);
+            border: none; color: white;
+            border-radius: 8px;
+            padding: 8px 16px;
+            cursor: pointer; font-size: 14px; font-weight: bold;
+            transition: background 0.2s;
+        }
+        .admin-close-btn:hover { background: rgba(255,255,255,0.35); }
+        .admin-tabs {
+            display: flex;
+            border-bottom: 2px solid #eee;
+            background: #f9f9f9;
+            padding: 0 30px;
+        }
+        body.dark .admin-tabs { background: #141414; border-color: #2a2a2a; }
+        .admin-tab {
+            padding: 14px 22px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            color: #666;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+            transition: color 0.2s, border-color 0.2s;
+            background: none; border-top: none; border-left: none; border-right: none;
+            font-family: Arial, sans-serif;
+        }
+        body.dark .admin-tab { color: #888; }
+        .admin-tab.active { color: #cc0000; border-bottom-color: #cc0000; }
+        .admin-tab-content { display: none; padding: 30px 35px; }
+        .admin-tab-content.active { display: block; }
+        .admin-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+        .admin-stat-card {
+            background: #f5f5f5;
+            border-radius: 10px;
+            padding: 18px 20px;
+            text-align: center;
+        }
+        body.dark .admin-stat-card { background: #252525; }
+        .admin-stat-card .stat-num { font-size: 32px; font-weight: bold; color: #cc0000; }
+        .admin-stat-card .stat-label { font-size: 12px; color: #888; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .admin-search {
+            width: 100%; padding: 10px 14px;
+            border: 1px solid #ddd; border-radius: 8px;
+            font-size: 14px; font-family: Arial, sans-serif;
+            margin-bottom: 18px;
+        }
+        body.dark .admin-search { background: #252525; border-color: #444; color: #e0e0e0; }
+        .admin-search:focus { outline: none; border-color: #cc0000; }
+        .admin-table-wrap { overflow-x: auto; border-radius: 8px; border: 1px solid #eee; }
+        body.dark .admin-table-wrap { border-color: #2a2a2a; }
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        .admin-table th {
+            background: #f0f0f0;
+            padding: 11px 14px;
+            text-align: left;
+            font-weight: bold;
+            color: #555;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+        body.dark .admin-table th { background: #222; color: #888; }
+        .admin-table td {
+            padding: 11px 14px;
+            border-top: 1px solid #f0f0f0;
+            color: #333;
+            vertical-align: top;
+        }
+        body.dark .admin-table td { border-color: #2a2a2a; color: #ccc; }
+        .admin-table tr:hover td { background: #fafafa; }
+        body.dark .admin-table tr:hover td { background: #222; }
+        .admin-badge {
+            display: inline-block;
+            padding: 3px 9px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        .badge-ppl { background: #dbeafe; color: #1e40af; }
+        .badge-rdv-police { background: #fef3c7; color: #92400e; }
+        .badge-rdv-chl { background: #dcfce7; color: #166534; }
+        .badge-rdv-civils { background: #f3e8ff; color: #6b21a8; }
+        .badge-rdv-entreprise { background: #ffe4e6; color: #9f1239; }
+        .badge-recruit { background: #d1fae5; color: #065f46; }
+        .admin-empty { text-align: center; padding: 50px 20px; color: #aaa; font-size: 15px; }
+        .admin-clear-btn {
+            background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5;
+            padding: 7px 14px; border-radius: 6px; cursor: pointer;
+            font-size: 13px; font-weight: bold; transition: background 0.2s;
+            float: right; margin-top: -5px;
+        }
+        .admin-clear-btn:hover { background: #fca5a5; }
+        .admin-export-btn {
+            background: #1a1a1a; color: white; border: none;
+            padding: 8px 16px; border-radius: 6px; cursor: pointer;
+            font-size: 13px; font-weight: bold; transition: background 0.2s;
+            margin-left: 8px;
+        }
+        .admin-export-btn:hover { background: #cc0000; }
+        .admin-toolbar { display: flex; align-items: center; margin-bottom: 18px; gap: 8px; }
+        .admin-toolbar .admin-search { margin-bottom: 0; flex: 1; }
+        .admin-logo-trigger { cursor: pointer; user-select: none; }
+        @media (max-width: 600px) {
+            .admin-stats { grid-template-columns: 1fr; }
+            .admin-tab { padding: 12px 14px; font-size: 12px; }
+            .admin-panel { border-radius: 10px; }
+            .admin-header { padding: 20px; }
+            .admin-tab-content { padding: 20px; }
+        }
     </style>
 </head>
 <body>
     <!-- Navigation -->
     <header>
         <nav>
-            <a href="#home" class="nav-logo" onclick="showPage('home'); return false;" data-page="home">
+            <a href="#home" class="nav-logo admin-logo-trigger" onclick="showPage('home'); return false;" data-page="home" id="logoAdminTrigger">
                 <img src="https://i.imgur.com/ITkSOJY.png" alt="Logo">
                 LA DÉFENSE
             </a>
@@ -1446,7 +1657,84 @@
             </div>
         </div>
 
-        <!-- Footer -->
+        <!-- ADMIN LOGIN MODAL -->
+    <div class="admin-login-overlay" id="adminLoginOverlay">
+        <div class="admin-login-box">
+            <button class="admin-login-close" onclick="closeAdminLogin()">✕</button>
+            <h2>🔐 Accès Admin</h2>
+            <p>Panneau réservé aux administrateurs de La Défense</p>
+            <input type="password" id="adminPasswordInput" placeholder="Mot de passe" onkeydown="if(event.key==='Enter') checkAdminPassword()">
+            <div class="admin-login-error" id="adminLoginError">❌ Mot de passe incorrect</div>
+            <button class="admin-login-btn" onclick="checkAdminPassword()">Se connecter</button>
+        </div>
+    </div>
+
+    <!-- ADMIN DASHBOARD -->
+    <div class="admin-overlay" id="adminOverlay">
+        <div class="admin-panel">
+            <div class="admin-header">
+                <div>
+                    <h1>🛡️ Panneau Administrateur</h1>
+                    <p>La Défense — Liège City · Toutes les soumissions</p>
+                </div>
+                <button class="admin-close-btn" onclick="closeAdmin()">✕ Fermer</button>
+            </div>
+
+            <!-- Tabs -->
+            <div class="admin-tabs">
+                <button class="admin-tab active" onclick="switchAdminTab('ppl', this)">🛩️ PPL</button>
+                <button class="admin-tab" onclick="switchAdminTab('rdv', this)">📅 Rendez-vous</button>
+                <button class="admin-tab" onclick="switchAdminTab('recrutement', this)">📋 Recrutement</button>
+                <button class="admin-tab" onclick="switchAdminTab('vols', this)">✈️ Plans de Vol</button>
+            </div>
+
+            <!-- PPL Tab -->
+            <div class="admin-tab-content active" id="admin-tab-ppl">
+                <div class="admin-stats" id="admin-stats-ppl"></div>
+                <div class="admin-toolbar">
+                    <input class="admin-search" type="text" placeholder="🔍 Rechercher..." oninput="renderAdminTable('ppl', this.value)">
+                    <button class="admin-export-btn" onclick="exportCSV('ppl')">⬇ CSV</button>
+                    <button class="admin-clear-btn" onclick="clearAdminData('ppl')">🗑 Effacer</button>
+                </div>
+                <div class="admin-table-wrap" id="admin-table-ppl"></div>
+            </div>
+
+            <!-- RDV Tab -->
+            <div class="admin-tab-content" id="admin-tab-rdv">
+                <div class="admin-stats" id="admin-stats-rdv"></div>
+                <div class="admin-toolbar">
+                    <input class="admin-search" type="text" placeholder="🔍 Rechercher..." oninput="renderAdminTable('rdv', this.value)">
+                    <button class="admin-export-btn" onclick="exportCSV('rdv')">⬇ CSV</button>
+                    <button class="admin-clear-btn" onclick="clearAdminData('rdv')">🗑 Effacer</button>
+                </div>
+                <div class="admin-table-wrap" id="admin-table-rdv"></div>
+            </div>
+
+            <!-- Recrutement Tab -->
+            <div class="admin-tab-content" id="admin-tab-recrutement">
+                <div class="admin-stats" id="admin-stats-recrutement"></div>
+                <div class="admin-toolbar">
+                    <input class="admin-search" type="text" placeholder="🔍 Rechercher..." oninput="renderAdminTable('recrutement', this.value)">
+                    <button class="admin-export-btn" onclick="exportCSV('recrutement')">⬇ CSV</button>
+                    <button class="admin-clear-btn" onclick="clearAdminData('recrutement')">🗑 Effacer</button>
+                </div>
+                <div class="admin-table-wrap" id="admin-table-recrutement"></div>
+            </div>
+
+            <!-- Vols Tab -->
+            <div class="admin-tab-content" id="admin-tab-vols">
+                <div class="admin-stats" id="admin-stats-vols"></div>
+                <div class="admin-toolbar">
+                    <input class="admin-search" type="text" placeholder="🔍 Rechercher..." oninput="renderAdminTable('vols', this.value)">
+                    <button class="admin-export-btn" onclick="exportCSV('vols')">⬇ CSV</button>
+                    <button class="admin-clear-btn" onclick="clearAdminData('vols')">🗑 Effacer</button>
+                </div>
+                <div class="admin-table-wrap" id="admin-table-vols"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
     <footer>
         <p>© La Défense Belge - Tous droits réservés (Liège City WL - Maxime Vandel)</p>
     </footer>
@@ -1461,7 +1749,7 @@
 
         // ⚠️ Webhook unique pour toutes les candidatures (recrutement)
         // Remplace cette URL par ton webhook Discord souhaité
-        const WEBHOOK_RECRUTEMENT = 'https://discord.com/api/webhooks/1512942980955373658/k5aSMVvOzj0MTeFF6Cl8UiGXREgcmVl-JYfEwzbcHVsNkpFrSwK9_CTdE_Ydr5fqrrgl';
+        const WEBHOOK_RECRUTEMENT = 'https://discord.com/api/webhooks/1503424568671600652/I0c8kO-gNroK1p0Dg7WSOJpn13jSt80uEa7UrtCoLqknFwaIJUDRbt4VQJRIX-KC5kTz';
 
         // ⚠️ Webhook pour les rendez-vous Permis de Vol PPL
         // Remplace cette URL par ton webhook Discord souhaité
@@ -1596,6 +1884,7 @@
             })
             .then(response => {
                 if (response.ok) {
+                    saveEntry('vols', formData);
                     showMessage('✅ Plan de vol enregistré avec succès!', 'success', 'flight-messages');
                     document.getElementById('flightForm').reset();
                     const today = new Date().toISOString().split('T')[0];
@@ -1671,6 +1960,7 @@
             })
             .then(response => {
                 if (response.ok) {
+                    saveEntry('recrutement', formData);
                     showMessage('✅ Candidature envoyée avec succès!', 'success', 'recruitment-messages');
                     document.getElementById('recruitmentForm').reset();
                     document.getElementById('position').value = '';
@@ -1746,6 +2036,7 @@
             })
             .then(response => {
                 if (response.ok) {
+                    saveEntry('ppl', formData);
                     showMessage('✅ Rendez-vous PPL enregistré avec succès!', 'success', 'ppl-messages');
                     document.getElementById('pplForm').reset();
                     const today = new Date().toISOString().split('T')[0];
@@ -1822,6 +2113,7 @@
             })
             .then(response => {
                 if (response.ok) {
+                    saveEntry('rdv', formData);
                     showMessage('✅ Demande de rendez-vous envoyée avec succès!', 'success', 'rdv-messages');
                     document.getElementById('rdvForm').reset();
                     document.getElementById('company-field').style.display = 'none';
@@ -1836,6 +2128,233 @@
                 showMessage('⚠️ Erreur lors de l\'envoi. Vérifiez le webhook RDV.', 'error', 'rdv-messages');
             });
         }
+
+        // ===== ADMIN PANEL =====
+        const ADMIN_PASSWORD = 'defense2025'; // ← Changer le mot de passe ici
+
+        // Triple-clic sur le logo pour ouvrir le login admin
+        let logoClickCount = 0, logoClickTimer = null;
+        document.getElementById('logoAdminTrigger').addEventListener('click', function(e) {
+            logoClickCount++;
+            if (logoClickTimer) clearTimeout(logoClickTimer);
+            logoClickTimer = setTimeout(() => { logoClickCount = 0; }, 600);
+            if (logoClickCount >= 3) {
+                logoClickCount = 0;
+                clearTimeout(logoClickTimer);
+                openAdminLogin();
+                e.preventDefault();
+            }
+        });
+
+        function openAdminLogin() {
+            document.getElementById('adminLoginOverlay').classList.add('open');
+            document.getElementById('adminPasswordInput').value = '';
+            document.getElementById('adminLoginError').style.display = 'none';
+            setTimeout(() => document.getElementById('adminPasswordInput').focus(), 100);
+        }
+
+        function closeAdminLogin() {
+            document.getElementById('adminLoginOverlay').classList.remove('open');
+        }
+
+        function checkAdminPassword() {
+            const pwd = document.getElementById('adminPasswordInput').value;
+            if (pwd === ADMIN_PASSWORD) {
+                closeAdminLogin();
+                openAdmin();
+            } else {
+                document.getElementById('adminLoginError').style.display = 'block';
+                document.getElementById('adminPasswordInput').value = '';
+                document.getElementById('adminPasswordInput').focus();
+            }
+        }
+
+        function openAdmin() {
+            document.getElementById('adminOverlay').classList.add('open');
+            refreshAdminTab('ppl');
+        }
+
+        function closeAdmin() {
+            document.getElementById('adminOverlay').classList.remove('open');
+        }
+
+        function switchAdminTab(tab, btn) {
+            document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.admin-tab-content').forEach(c => c.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('admin-tab-' + tab).classList.add('active');
+            refreshAdminTab(tab);
+        }
+
+        function refreshAdminTab(tab) {
+            renderAdminStats(tab);
+            renderAdminTable(tab, '');
+        }
+
+        // Sauvegarde locale des soumissions
+        function saveEntry(type, data) {
+            const key = 'admin_' + type;
+            const list = JSON.parse(localStorage.getItem(key) || '[]');
+            data._id = Date.now();
+            data._date = new Date().toLocaleString('fr-BE');
+            list.unshift(data);
+            localStorage.setItem(key, JSON.stringify(list));
+        }
+
+        function getEntries(type) {
+            return JSON.parse(localStorage.getItem('admin_' + type) || '[]');
+        }
+
+        function clearAdminData(type) {
+            if (!confirm('Effacer toutes les entrées de cette catégorie ?')) return;
+            localStorage.removeItem('admin_' + type);
+            refreshAdminTab(type);
+        }
+
+        // Statistiques
+        function renderAdminStats(type) {
+            const entries = getEntries(type);
+            const container = document.getElementById('admin-stats-' + type);
+            const today = new Date().toLocaleDateString('fr-BE');
+            const todayCount = entries.filter(e => e._date && e._date.startsWith(today.split('/').reverse().join('/'))).length;
+
+            let extra = '';
+            if (type === 'rdv') {
+                const cats = {};
+                entries.forEach(e => { cats[e.type] = (cats[e.type] || 0) + 1; });
+                const topCat = Object.entries(cats).sort((a,b) => b[1]-a[1])[0];
+                extra = `<div class="admin-stat-card"><div class="stat-num">${topCat ? topCat[0] : '—'}</div><div class="stat-label">Catégorie principale</div></div>`;
+            } else if (type === 'recrutement') {
+                const postes = {};
+                entries.forEach(e => { postes[e.position] = (postes[e.position] || 0) + 1; });
+                const top = Object.entries(postes).sort((a,b) => b[1]-a[1])[0];
+                extra = `<div class="admin-stat-card"><div class="stat-num" style="font-size:16px;margin-top:6px">${top ? top[0] : '—'}</div><div class="stat-label">Poste le plus demandé</div></div>`;
+            } else if (type === 'ppl') {
+                const types = {};
+                entries.forEach(e => { types[e.type] = (types[e.type] || 0) + 1; });
+                const top = Object.entries(types).sort((a,b) => b[1]-a[1])[0];
+                extra = `<div class="admin-stat-card"><div class="stat-num" style="font-size:16px;margin-top:6px">${top ? top[0] : '—'}</div><div class="stat-label">Type d'examen principal</div></div>`;
+            } else if (type === 'vols') {
+                const aircrafts = {};
+                entries.forEach(e => { aircrafts[e.aircraftType] = (aircrafts[e.aircraftType] || 0) + 1; });
+                const top = Object.entries(aircrafts).sort((a,b) => b[1]-a[1])[0];
+                extra = `<div class="admin-stat-card"><div class="stat-num" style="font-size:16px;margin-top:6px">${top ? formatAircraftType(top[0]) : '—'}</div><div class="stat-label">Aéronef le plus fréquent</div></div>`;
+            }
+
+            container.innerHTML = `
+                <div class="admin-stat-card"><div class="stat-num">${entries.length}</div><div class="stat-label">Total soumissions</div></div>
+                <div class="admin-stat-card"><div class="stat-num">${todayCount}</div><div class="stat-label">Aujourd'hui</div></div>
+                ${extra}
+            `;
+        }
+
+        // Table générique
+        function renderAdminTable(type, search) {
+            const entries = getEntries(type).filter(e => {
+                if (!search) return true;
+                return JSON.stringify(e).toLowerCase().includes(search.toLowerCase());
+            });
+            const container = document.getElementById('admin-table-' + type);
+
+            if (!entries.length) {
+                container.innerHTML = `<div class="admin-empty">📭 Aucune soumission enregistrée${search ? ' pour cette recherche' : ''}.</div>`;
+                return;
+            }
+
+            let html = '';
+            if (type === 'ppl') {
+                html = `<table class="admin-table"><thead><tr>
+                    <th>#</th><th>Date</th><th>Nom</th><th>Discord</th><th>Email</th><th>RDV</th><th>Type</th><th>Expérience</th>
+                </tr></thead><tbody>`;
+                entries.forEach((e, i) => {
+                    html += `<tr>
+                        <td>${entries.length - i}</td>
+                        <td style="white-space:nowrap">${e._date || ''}</td>
+                        <td><strong>${e.fullname || ''}</strong></td>
+                        <td>${e.discord || ''}</td>
+                        <td>${e.email || ''}</td>
+                        <td style="white-space:nowrap">${e.date || ''} ${e.time || ''}</td>
+                        <td><span class="admin-badge badge-ppl">${e.type || ''}</span></td>
+                        <td>${e.experience || '—'}</td>
+                    </tr>`;
+                });
+                html += '</tbody></table>';
+            } else if (type === 'rdv') {
+                const badgeClass = { Police: 'badge-rdv-police', CHL: 'badge-rdv-chl', Civils: 'badge-rdv-civils', Entreprise: 'badge-rdv-entreprise' };
+                html = `<table class="admin-table"><thead><tr>
+                    <th>#</th><th>Date</th><th>Nom</th><th>Discord</th><th>Email</th><th>Catégorie</th><th>Entreprise</th><th>Objet</th><th>RDV</th>
+                </tr></thead><tbody>`;
+                entries.forEach((e, i) => {
+                    html += `<tr>
+                        <td>${entries.length - i}</td>
+                        <td style="white-space:nowrap">${e._date || ''}</td>
+                        <td><strong>${e.fullname || ''}</strong></td>
+                        <td>${e.discord || ''}</td>
+                        <td>${e.email || ''}</td>
+                        <td><span class="admin-badge ${badgeClass[e.type] || 'badge-ppl'}">${e.type || ''}</span></td>
+                        <td>${e.company || '—'}</td>
+                        <td>${e.subject || ''}</td>
+                        <td style="white-space:nowrap">${e.date || ''} ${e.time || ''}</td>
+                    </tr>`;
+                });
+                html += '</tbody></table>';
+            } else if (type === 'recrutement') {
+                html = `<table class="admin-table"><thead><tr>
+                    <th>#</th><th>Date</th><th>Nom</th><th>Email</th><th>Téléphone</th><th>Poste</th><th>Expérience</th><th>Motivation</th>
+                </tr></thead><tbody>`;
+                entries.forEach((e, i) => {
+                    html += `<tr>
+                        <td>${entries.length - i}</td>
+                        <td style="white-space:nowrap">${e._date || ''}</td>
+                        <td><strong>${e.fullname || ''}</strong></td>
+                        <td>${e.email || ''}</td>
+                        <td>${e.phone || ''}</td>
+                        <td><span class="admin-badge badge-recruit">${e.position || ''}</span></td>
+                        <td>${(e.experience || '—').substring(0, 60)}${(e.experience||'').length > 60 ? '…' : ''}</td>
+                        <td>${(e.motivation || '—').substring(0, 60)}${(e.motivation||'').length > 60 ? '…' : ''}</td>
+                    </tr>`;
+                });
+                html += '</tbody></table>';
+            } else if (type === 'vols') {
+                html = `<table class="admin-table"><thead><tr>
+                    <th>#</th><th>Date</th><th>Pilote</th><th>Co-pilote</th><th>Aéronef</th><th>Transpondeur</th><th>Trajet</th><th>Horaires</th>
+                </tr></thead><tbody>`;
+                entries.forEach((e, i) => {
+                    html += `<tr>
+                        <td>${entries.length - i}</td>
+                        <td style="white-space:nowrap">${e._date || ''}</td>
+                        <td><strong>${e.pilot || ''}</strong></td>
+                        <td>${e.copilot || '—'}</td>
+                        <td>${formatAircraftType(e.aircraftType)} ${e.model || ''}</td>
+                        <td>${e.transponder || ''}</td>
+                        <td style="white-space:nowrap">${e.departureLocation || ''} → ${e.arrivalLocation || ''}</td>
+                        <td style="white-space:nowrap">${e.departureTime || ''} – ${e.arrivalTime || ''}</td>
+                    </tr>`;
+                });
+                html += '</tbody></table>';
+            }
+            container.innerHTML = html;
+        }
+
+        // Export CSV
+        function exportCSV(type) {
+            const entries = getEntries(type);
+            if (!entries.length) { alert('Aucune donnée à exporter.'); return; }
+            const keys = Object.keys(entries[0]).filter(k => !k.startsWith('_'));
+            const header = ['Date', ...keys].join(';');
+            const rows = entries.map(e => [e._date || '', ...keys.map(k => (e[k] || '').toString().replace(/;/g, ',').replace(/\n/g, ' '))].join(';'));
+            const csv = [header, ...rows].join('\n');
+            const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a'); a.href = url;
+            a.download = `defense_${type}_${new Date().toISOString().split('T')[0]}.csv`;
+            a.click(); URL.revokeObjectURL(url);
+        }
+
+        // Fermer admin avec Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') { closeAdmin(); closeAdminLogin(); }
+        });
 
         // ===== MENU HAMBURGER =====
         function toggleMenu() {
