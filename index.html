@@ -859,6 +859,18 @@
         body.dark .ppl-formule-card { background: #1e1e1e; }
         body.dark .ppl-formule-body ul li { color: #aaa; border-color: #2a2a2a; }
         body.dark .ppl-formule-duree { background: #2a2a2a; color: #aaa; }
+        .ppl-formule-prix {
+            font-size: 28px;
+            font-weight: bold;
+            color: #cc0000;
+            margin-bottom: 16px;
+            display: block;
+        }
+        .ppl-formule-prix span {
+            font-size: 14px;
+            font-weight: normal;
+            color: #999;
+        }
 
     </style>
 </head>
@@ -1364,7 +1376,8 @@
                                 <li>Examen pratique inclus</li>
                             </ul>
                             <div class="ppl-formule-duree">⏱️ Théorie + heures de vol selon les besoins</div>
-                            <button class="ppl-formule-btn" onclick="selectPplFormule('Formule 1 – Théorie + Pratique')">📅 Prendre Rendez-vous</button>
+                            <strong class="ppl-formule-prix">25.000 € <span>/ formule</span></strong>
+                            <button class="ppl-formule-btn" onclick="selectPplFormule('Formule 1 – Théorie + Pratique (25.000 €)')">📅 Prendre Rendez-vous</button>
                         </div>
                     </div>
 
@@ -1385,7 +1398,8 @@
                                 <li>Examen pratique inclus</li>
                             </ul>
                             <div class="ppl-formule-duree">⏱️ Durée : 1 h 30</div>
-                            <button class="ppl-formule-btn" onclick="selectPplFormule('Formule 2 – Intensif (1h30)')">📅 Prendre Rendez-vous</button>
+                            <strong class="ppl-formule-prix">70.000 € <span>/ formule</span></strong>
+                            <button class="ppl-formule-btn" onclick="selectPplFormule('Formule 2 – Intensif 1h30 (70.000 €)')">📅 Prendre Rendez-vous</button>
                         </div>
                     </div>
 
@@ -1405,7 +1419,8 @@
                                 <li>Examen pratique inclus</li>
                             </ul>
                             <div class="ppl-formule-duree">⏱️ Durée : 30 minutes</div>
-                            <button class="ppl-formule-btn" onclick="selectPplFormule('Formule 3 – Express (30 min)')">📅 Prendre Rendez-vous</button>
+                            <strong class="ppl-formule-prix">500.000 € <span>/ formule</span></strong>
+                            <button class="ppl-formule-btn" onclick="selectPplFormule('Formule 3 – Express 30min (500.000 €)')">📅 Prendre Rendez-vous</button>
                         </div>
                     </div>
 
