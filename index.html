@@ -536,6 +536,7 @@
         .comp-air .composante-bg     { background: linear-gradient(135deg, #0d1a2e 0%, #1a3a5c 50%, #0a0a1a 100%); }
         .comp-med .composante-bg     { background: linear-gradient(135deg, #3a0d0d 0%, #5c1a1a 50%, #1a0a0a 100%); }
         .comp-fs .composante-bg      { background: linear-gradient(135deg, #1a1a1a 0%, #3a3a3a 50%, #0a0a0a 100%); }
+        .comp-mer .composante-bg      { background: linear-gradient(135deg, #0d1e2e 0%, #0a3a5c 50%, #061520 100%); }
 
         /* Emoji large centré en fond */
         .composante-bg-emoji {
@@ -1377,7 +1378,7 @@
                         <div class="composante-content">
                             <div class="composante-badge">Composante Terre</div>
                             <div class="composante-name">Infanterie</div>
-                            <p class="composante-desc">Patrouilles, opérations tactiques et sécurisation du territoire. L'epine dorsale de la Défense.</p>
+                            <p class="composante-desc">Patrouilles, opérations tactiques et sécurisation du territoire. L'épine dorsale de la Défense.</p>
                         </div>
                     </div>
                     <div class="composante-card comp-air" onclick="showPage('carrieres')">
@@ -1401,7 +1402,15 @@
                         <div class="composante-content">
                             <div class="composante-badge">Forces Spéciales</div>
                             <div class="composante-name">FS Sniper</div>
-                            <p class="composante-desc">Neutralisation à longue distance, reconnaissance clandestine. L'elite des élites.</p>
+                            <p class="composante-desc">Neutralisation à longue distance, reconnaissance clandestine. L'élite des élites.</p>
+                        </div>
+                    </div>
+                    <div class="composante-card comp-mer" onclick="showPage('carrieres')">
+                        <div class="composante-bg"><div class="composante-bg-emoji">⚓</div></div>
+                        <div class="composante-content">
+                            <div class="composante-badge">Composante Marine</div>
+                            <div class="composante-name">Marine</div>
+                            <p class="composante-desc">Opérations navales, surveillance côtière et maîtrise des eaux de Liège City. La force des profondeurs.</p>
                         </div>
                     </div>
                 </div>
@@ -1601,6 +1610,18 @@
                         </div>
                         <button class="recruit-btn" onclick="selectPosition('Responsable Logistique')">Candidater</button>
                     </div>
+
+                    <div class="position-card">
+                        <div class="position-category">Marine</div>
+                        <h3>Marin de Combat</h3>
+                        <p>Opérations navales, patrouilles fluviales et sécurisation des zones portuaires.</p>
+                        <div class="position-requirements">
+                            ✓ Diplôme secondaire<br>
+                            ✓ Bonne condition physique<br>
+                            ✓ 18-35 ans
+                        </div>
+                        <button class="recruit-btn" onclick="selectPosition('Marin de Combat')">Candidater</button>
+                    </div>
                 </div>
 
                 <!-- Formulaire de Candidature -->
@@ -1715,6 +1736,32 @@
                         </div>
                     </div>
 
+                    <!-- Marin / Composante Marine -->
+                    <div class="career-card">
+                        <div class="career-card-header">
+                            <span class="career-icon">⚓</span>
+                            <span class="career-badge">Composante Marine</span>
+                            <h3>Marin de Combat</h3>
+                        </div>
+                        <div class="career-card-body">
+                            <p class="career-desc">Le marin de combat assure la maîtrise des eaux et la sécurité des voies navigables de Liège City. Opérations amphibies, patrouilles fluviales et interventions navales font partie de son quotidien.</p>
+                            <div class="career-missions">
+                                <h4>Missions principales</h4>
+                                <ul>
+                                    <li>Patrouilles et surveillance des eaux</li>
+                                    <li>Opérations amphibies et débarquement</li>
+                                    <li>Sécurisation des zones portuaires</li>
+                                    <li>Soutien logistique par voie fluviale</li>
+                                </ul>
+                            </div>
+                            <div class="career-conditions">
+                                <h4>Conditions requises</h4>
+                                <p>✓ Diplôme secondaire &nbsp;|&nbsp; ✓ Bonne condition physique &nbsp;|&nbsp; ✓ 18-35 ans</p>
+                            </div>
+                            <button class="career-apply-btn" onclick="goToRecruit('Marin de Combat')">✉️ Candidater à ce poste</button>
+                        </div>
+                    </div>
+
                     <!-- FS Sniper -->
                     <div class="career-card">
                         <div class="career-card-header">
@@ -1818,6 +1865,7 @@
                             <button class="career-apply-btn" onclick="goToRecruit('Responsable Logistique')">✉️ Candidater à ce poste</button>
                         </div>
                     </div>
+
 
                 </div>
             </div>
