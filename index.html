@@ -187,55 +187,497 @@
             to { opacity: 1; }
         }
 
-        /* Home Page */
-        .home-page {
-            padding: 60px 20px;
-            text-align: center;
-        }
+        /* ===== HOME PAGE — REDESIGN ===== */
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
-        .home-logo {
-            width: 150px;
-            height: 150px;
-            margin-bottom: 30px;
-        }
-
-        .home-page h1 {
-            font-size: 48px;
-            margin-bottom: 10px;
-            color: #333;
-            font-weight: bold;
-        }
-
-        .home-page .subtitle {
-            font-size: 20px;
-            color: #666;
-            margin-bottom: 30px;
-        }
-
-        .home-video {
-            width: 100%;
-            max-width: 800px;
-            height: 450px;
-            margin: 40px auto;
-            border-radius: 8px;
+        /* Hero */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin: 0 -20px;
         }
 
-        .home-video iframe {
+        .hero-video-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none;
+        }
+
+        .hero-video-bg iframe {
             width: 100%;
             height: 100%;
             border: none;
+            transform: scale(1.08);
         }
 
-        .home-description {
-            max-width: 800px;
-            margin: 40px auto;
+        /* Overlay sombre + vignette rouge en bas */
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(0,0,0,0.55) 0%,
+                rgba(0,0,0,0.35) 40%,
+                rgba(0,0,0,0.60) 75%,
+                rgba(10,0,0,0.90) 100%
+            );
+            z-index: 1;
+        }
+
+        /* Ligne rouge horizontale décorative */
+        .hero-redline {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #cc0000;
+            z-index: 3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+            max-width: 860px;
+        }
+
+        .hero-eyebrow {
+            font-family: 'Oswald', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #cc0000;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .hero-eyebrow::before,
+        .hero-eyebrow::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: #cc0000;
+        }
+
+        .hero-logo {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 20px rgba(204,0,0,0.4));
+            animation: heroLogoIn 1s ease both;
+        }
+
+        @keyframes heroLogoIn {
+            from { opacity: 0; transform: translateY(-20px) scale(0.9); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .hero-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(52px, 9vw, 96px);
+            font-weight: 700;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 6px;
+            animation: heroTitleIn 1s ease 0.15s both;
+        }
+
+        @keyframes heroTitleIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-title span {
+            color: #cc0000;
+        }
+
+        .hero-subtitle {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(14px, 2.5vw, 20px);
+            font-weight: 400;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.65);
+            margin-bottom: 36px;
+            animation: heroTitleIn 1s ease 0.3s both;
+        }
+
+        .hero-desc {
+            font-family: 'Inter', sans-serif;
             font-size: 16px;
             line-height: 1.8;
-            color: #555;
+            color: rgba(255,255,255,0.78);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            animation: heroTitleIn 1s ease 0.45s both;
         }
 
+        .hero-ctas {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: heroTitleIn 1s ease 0.6s both;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 36px;
+            background: #cc0000;
+            color: white;
+            font-family: 'Oswald', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: background 0.25s, transform 0.2s;
+            clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+        }
+
+        .btn-primary:hover {
+            background: #e60000;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 34px;
+            background: transparent;
+            color: white;
+            font-family: 'Oswald', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 1.5px solid rgba(255,255,255,0.45);
+            cursor: pointer;
+            transition: border-color 0.25s, color 0.25s, transform 0.2s;
+            clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+        }
+
+        .btn-outline:hover {
+            border-color: white;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Scroll indicator */
+        .hero-scroll {
+            position: absolute;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            color: rgba(255,255,255,0.4);
+            font-family: 'Oswald', sans-serif;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .hero-scroll-arrow {
+            width: 1px;
+            height: 36px;
+            background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.35));
+            animation: scrollPulse 1.8s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* Stats band */
+        .stats-band {
+            background: #0f0f0f;
+            padding: 28px 40px;
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            flex-wrap: wrap;
+            margin: 0 -20px;
+        }
+
+        .stat-item {
+            flex: 1;
+            min-width: 140px;
+            max-width: 220px;
+            text-align: center;
+            padding: 16px 24px;
+            border-right: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .stat-item:last-child { border-right: none; }
+
+        .stat-number {
+            font-family: 'Oswald', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: #cc0000;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.45);
+            margin-top: 6px;
+        }
+
+        /* Composantes section */
+        .composantes-section {
+            padding: 80px 0 60px;
+        }
+
+        .section-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #cc0000;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+            color: #111;
+            margin-bottom: 14px;
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 620px;
+            margin: 0 auto 56px;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            line-height: 1.8;
+            color: #666;
+        }
+
+        .composantes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2px;
+        }
+
+        .composante-card {
+            position: relative;
+            overflow: hidden;
+            background: #111;
+            cursor: pointer;
+            aspect-ratio: 3/4;
+            min-height: 280px;
+        }
+
+        .composante-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.3) 55%, transparent 100%);
+            z-index: 1;
+            transition: background 0.4s;
+        }
+
+        .composante-card:hover::before {
+            background: linear-gradient(to top, rgba(140,0,0,0.92) 0%, rgba(0,0,0,0.5) 60%, transparent 100%);
+        }
+
+        .composante-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s ease;
+        }
+
+        .composante-card:hover .composante-bg {
+            transform: scale(1.06);
+        }
+
+        /* Gradient placeholder backgrounds */
+        .comp-terre .composante-bg   { background: linear-gradient(135deg, #1a3a1a 0%, #2d5a2d 50%, #1a1a0d 100%); }
+        .comp-air .composante-bg     { background: linear-gradient(135deg, #0d1a2e 0%, #1a3a5c 50%, #0a0a1a 100%); }
+        .comp-med .composante-bg     { background: linear-gradient(135deg, #3a0d0d 0%, #5c1a1a 50%, #1a0a0a 100%); }
+        .comp-fs .composante-bg      { background: linear-gradient(135deg, #1a1a1a 0%, #3a3a3a 50%, #0a0a0a 100%); }
+
+        /* Emoji large centré en fond */
+        .composante-bg-emoji {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            opacity: 0.18;
+        }
+
+        .composante-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 28px 24px;
+            z-index: 2;
+            color: white;
+        }
+
+        .composante-badge {
+            display: inline-block;
+            font-family: 'Oswald', sans-serif;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #cc0000;
+            border: 1px solid rgba(204,0,0,0.5);
+            padding: 3px 10px;
+            margin-bottom: 10px;
+        }
+
+        .composante-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .composante-desc {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            line-height: 1.6;
+            color: rgba(255,255,255,0.7);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.4s ease;
+            opacity: 0;
+        }
+
+        .composante-card:hover .composante-desc {
+            max-height: 80px;
+            opacity: 1;
+        }
+
+        /* Engagement CTA section */
+        .engagement-section {
+            background: #0f0f0f;
+            margin: 0 -20px;
+            padding: 80px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .engagement-section::before {
+            content: 'DÉFENSE';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(80px, 18vw, 200px);
+            font-weight: 700;
+            color: rgba(255,255,255,0.025);
+            letter-spacing: 10px;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        .engagement-section .section-title {
+            color: white;
+        }
+
+        .engagement-section .section-intro {
+            color: rgba(255,255,255,0.55);
+        }
+
+        .engagement-pillars {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 48px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .pillar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            min-width: 120px;
+        }
+
+        .pillar-icon {
+            width: 52px;
+            height: 52px;
+            border: 1px solid rgba(204,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            background: rgba(204,0,0,0.1);
+        }
+
+        .pillar-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .engagement-ctas {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* OLD compatibilité */
         .cta-button {
             display: inline-block;
             padding: 12px 30px;
@@ -250,73 +692,19 @@
             font-size: 16px;
             margin: 10px 5px;
         }
-
-        .cta-button:hover {
-            background: #990000;
-        }
-
-        .cta-button.secondary {
-            background: #999;
-            border: 2px solid #333;
-        }
-
-        .cta-button.secondary:hover {
-            background: #777;
-        }
+        .cta-button:hover { background: #990000; }
+        .cta-button.secondary { background: #999; border: 2px solid #333; }
+        .cta-button.secondary:hover { background: #777; }
 
         /* Missions Section */
-        .missions-section {
-            padding: 60px 0;
-        }
-
-        .missions-section h2 {
-            font-size: 36px;
-            text-align: center;
-            margin-bottom: 50px;
-            color: #333;
-        }
-
-        .missions-description {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 50px;
-            font-size: 16px;
-            line-height: 1.8;
-            color: #555;
-        }
-
-        .missions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-
-        .mission-card {
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .mission-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-        }
-
-        .mission-card h3 {
-            font-size: 18px;
-            margin-bottom: 10px;
-            color: #cc0000;
-            font-weight: bold;
-        }
-
-        .mission-card p {
-            font-size: 14px;
-            color: #666;
-            line-height: 1.7;
-        }
+        .missions-section { padding: 60px 0; }
+        .missions-section h2 { font-size: 36px; text-align: center; margin-bottom: 50px; color: #333; }
+        .missions-description { text-align: center; max-width: 800px; margin: 0 auto 50px; font-size: 16px; line-height: 1.8; color: #555; }
+        .missions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 40px; }
+        .mission-card { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s; }
+        .mission-card:hover { transform: translateY(-5px); box-shadow: 0 5px 20px rgba(0,0,0,0.15); }
+        .mission-card h3 { font-size: 18px; margin-bottom: 10px; color: #cc0000; font-weight: bold; }
+        .mission-card p { font-size: 14px; color: #666; line-height: 1.7; }
 
         /* Form Section */
         .form-section {
@@ -872,6 +1260,14 @@
             color: #999;
         }
 
+        /* Dark mode — new home */
+        body.dark .section-title { color: #e0e0e0; }
+        body.dark .section-intro { color: #888; }
+        body.dark .composantes-section { background: transparent; }
+        body.dark .stats-band { background: #080808; }
+        body.dark .stat-label { color: rgba(255,255,255,0.35); }
+        body.dark .engagement-section { background: #080808; }
+
     </style>
 </head>
 <body>
@@ -915,49 +1311,132 @@
     <div class="main-content">
         <!-- HOME PAGE -->
         <div class="page active" id="home">
-            <div class="home-page">
-                <img src="https://i.imgur.com/ITkSOJY.png" alt="Logo" class="home-logo">
-                <h1>LA DÉFENSE</h1>
-                <p class="subtitle">Liège City - Votre futur. Notre mission.</p>
 
-                <div class="home-video">
-                    <iframe src="https://www.youtube.com/embed/l5mtdWBNXPQ?autoplay=1&mute=1&loop=1&playlist=l5mtdWBNXPQ&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3" allowfullscreen=""></iframe>
+            <!-- HERO -->
+            <div class="hero">
+                <div class="hero-video-bg">
+                    <iframe src="https://www.youtube.com/embed/l5mtdWBNXPQ?autoplay=1&mute=1&loop=1&playlist=l5mtdWBNXPQ&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3" allowfullscreen></iframe>
+                </div>
+                <div class="hero-overlay"></div>
+                <div class="hero-redline"></div>
+
+                <div class="hero-content">
+                    <div class="hero-eyebrow">Liège City</div>
+                    <img src="https://i.imgur.com/ITkSOJY.png" alt="Logo La Défense" class="hero-logo">
+                    <h1 class="hero-title">LA <span>DÉFENSE</span></h1>
+                    <p class="hero-subtitle">Protéger · Servir · S&#39;engager</p>
+                    <p class="hero-desc">
+                        La Défense belge protège les citoyens de Liège City chaque jour. Forces terrestres, aériennes et médicales unies dans une même mission : la sécurité collective.
+                    </p>
+                    <div class="hero-ctas">
+                        <button class="btn-primary" onclick="showPage('recrutement')">
+                            🎖️ S'engager maintenant
+                        </button>
+                        <button class="btn-outline" onclick="showPage('carrieres')" style="color:white;">
+                            Voir les carrières
+                        </button>
+                    </div>
                 </div>
 
-                <div class="home-description">
-                    <p>La Défense, votre futur. Notre mission.</p>
-                    <p style="margin-top: 20px;">La Défense belge protège l'avenir de nos citoyens en assurant leur sécurité au quotidien, en Belgique comme à l'étranger.</p>
-                    <p style="margin-top: 20px;">À travers des missions internationales, un soutien à la nation en cas de crise, et la défense du territoire, nos forces terrestres, aériennes et médicales contribuent à la paix, à la stabilité et à la protection collective.</p>
-                </div>
-
-                <button class="cta-button" onclick="showPage('recrutement')">S'Engager</button>
-            </div>
-
-            <!-- Missions on Home -->
-            <div class="missions-section">
-                <h2>Nos Missions</h2>
-                <div class="missions-grid">
-                    <div class="mission-card">
-                        <h3>Composante Terre</h3>
-                        <p>Épine dorsale de l'armée de terre, le soldat d'infanterie assure la défense du territoire national et participe aux opérations terrestres en Belgique comme à l'étranger.</p>
-                    </div>
-                    <div class="mission-card">
-                        <h3>Composante Médicale</h3>
-                        <p>Le médecin militaire assure la santé des troupes sur le terrain et en garnison. Il intervient en zone de conflit pour soigner et stabiliser les blessés de guerre.</p>
-                    </div>
-                    <div class="mission-card">
-                        <h3>Composante Air</h3>
-                        <p>Maître du ciel, le pilote de chasse assure la supériorité aérienne de la Belgique. Précision, sang-froid et réflexes sont ses armes au quotidien.</p>
-                    </div>
-                    <div class="mission-card">
-                        <h3>FS Sniper</h3>
-                        <p>Tireur d’élite des forces spéciales, missions de précision, reconnaissance et neutralisation à longue distance.</p>
-                    </div>
+                <div class="hero-scroll">
+                    <div class="hero-scroll-arrow"></div>
+                    Défiler
                 </div>
             </div>
+
+            <!-- STATS BAND -->
+            <div class="stats-band">
+                <div class="stat-item">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Composantes</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Opérationnel</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">PPL</div>
+                    <div class="stat-label">Formation aviation</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">RP</div>
+                    <div class="stat-label">Liège City</div>
+                </div>
+            </div>
+
+            <!-- COMPOSANTES -->
+            <div class="composantes-section">
+                <p class="section-label">Nos forces</p>
+                <h2 class="section-title">Nos Composantes</h2>
+                <p class="section-intro">
+                    Quatre corps d'elite, une seule mission. Chaque composante défend un domaine stratégique de Liège City.
+                </p>
+                <div class="composantes-grid">
+                    <div class="composante-card comp-terre" onclick="showPage('carrieres')">
+                        <div class="composante-bg"><div class="composante-bg-emoji">🪖</div></div>
+                        <div class="composante-content">
+                            <div class="composante-badge">Composante Terre</div>
+                            <div class="composante-name">Infanterie</div>
+                            <p class="composante-desc">Patrouilles, opérations tactiques et sécurisation du territoire. L'epine dorsale de la Défense.</p>
+                        </div>
+                    </div>
+                    <div class="composante-card comp-air" onclick="showPage('carrieres')">
+                        <div class="composante-bg"><div class="composante-bg-emoji">✈️</div></div>
+                        <div class="composante-content">
+                            <div class="composante-badge">Composante Air</div>
+                            <div class="composante-name">Pilote de Chasse</div>
+                            <p class="composante-desc">Supériorité aérienne, appui rapproché et reconnaissance. Maître du ciel de Liège.</p>
+                        </div>
+                    </div>
+                    <div class="composante-card comp-med" onclick="showPage('carrieres')">
+                        <div class="composante-bg"><div class="composante-bg-emoji">⚕️</div></div>
+                        <div class="composante-content">
+                            <div class="composante-badge">Composante Médicale</div>
+                            <div class="composante-name">Médecin Militaire</div>
+                            <p class="composante-desc">Soins d'urgence en opération, triage et évacuation sanitaire. Aucun soldat laissé en arrière.</p>
+                        </div>
+                    </div>
+                    <div class="composante-card comp-fs" onclick="showPage('carrieres')">
+                        <div class="composante-bg"><div class="composante-bg-emoji">🎯</div></div>
+                        <div class="composante-content">
+                            <div class="composante-badge">Forces Spéciales</div>
+                            <div class="composante-name">FS Sniper</div>
+                            <p class="composante-desc">Neutralisation à longue distance, reconnaissance clandestine. L'elite des élites.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ENGAGEMENT CTA -->
+            <div class="engagement-section">
+                <p class="section-label">Rejoins-nous</p>
+                <h2 class="section-title">Prêt à Servir ?</h2>
+                <p class="section-intro">
+                    La Défense recrute des hommes et des femmes motivés, prêts à défendre Liège City avec honneur. Quelle que soit ta vocation, il y a une place pour toi.
+                </p>
+                <div class="engagement-pillars">
+                    <div class="pillar"><div class="pillar-icon">🛡️</div><div class="pillar-label">Honneur</div></div>
+                    <div class="pillar"><div class="pillar-icon">🤝</div><div class="pillar-label">Camaraderie</div></div>
+                    <div class="pillar"><div class="pillar-icon">💪</div><div class="pillar-label">Dépassement</div></div>
+                    <div class="pillar"><div class="pillar-icon">🎯</div><div class="pillar-label">Précision</div></div>
+                    <div class="pillar"><div class="pillar-icon">🏅</div><div class="pillar-label">Excellence</div></div>
+                </div>
+                <div class="engagement-ctas">
+                    <button class="btn-primary" onclick="showPage('recrutement')">
+                        📋 Postuler maintenant
+                    </button>
+                    <button class="btn-outline" onclick="showPage('ppl')" style="color:white;">
+                        ✈️ Formation PPL
+                    </button>
+                    <button class="btn-outline" onclick="showPage('rdv')" style="color:white;">
+                        📅 Prendre rendez-vous
+                    </button>
+                </div>
+            </div>
+
         </div>
 
-        <!-- PLAN DE VOL PAGE -->
+                <!-- PLAN DE VOL PAGE -->
         <div class="page" id="plan-vol">
             <div class="form-section">
                 <h2>✈️ Plan de Vol</h2>
