@@ -16,6 +16,11 @@
             background-color: #f5f5f5;
             color: #333;
             line-height: 1.6;
+            transition: background 0.3s, color 0.3s;
+        }
+        body.dark {
+            background-color: #0d0d0d;
+            color: #ccc;
         }
 
         /* Navigation */
@@ -1269,6 +1274,831 @@
         body.dark .stat-label { color: rgba(255,255,255,0.35); }
         body.dark .engagement-section { background: #080808; }
 
+        /* ===== PAGE HERO (inner pages) ===== */
+        .page-hero {
+            position: relative;
+            height: 320px;
+            display: flex;
+            align-items: flex-end;
+            overflow: hidden;
+            margin: 0 -20px;
+            background: #0a0a0a;
+        }
+
+        .page-hero-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.35) saturate(0.8);
+            transform: scale(1.04);
+            transition: transform 8s ease;
+        }
+
+        .page-hero:hover .page-hero-bg { transform: scale(1.08); }
+
+        .page-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.5) 50%, rgba(10,0,0,0.92) 100%);
+            z-index: 1;
+        }
+
+        .page-hero-redline {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 3px;
+            background: #cc0000;
+            z-index: 3;
+        }
+
+        .page-hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 48px 36px;
+            width: 100%;
+        }
+
+        .page-hero-eyebrow {
+            font-family: 'Oswald', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #cc0000;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .page-hero-eyebrow::before {
+            content: '';
+            display: block;
+            width: 28px;
+            height: 1px;
+            background: #cc0000;
+        }
+
+        .page-hero-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(32px, 5vw, 58px);
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: white;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .page-hero-title span { color: #cc0000; }
+
+        .page-hero-sub {
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            color: rgba(255,255,255,0.55);
+            max-width: 560px;
+            line-height: 1.65;
+        }
+
+        /* ===== REDESIGNED INNER PAGE LAYOUT ===== */
+        .inner-page-content {
+            padding: 60px 0 80px;
+        }
+
+        /* Section intro block */
+        .page-intro-block {
+            text-align: center;
+            max-width: 680px;
+            margin: 0 auto 56px;
+        }
+
+        .page-intro-block .section-label { margin-bottom: 10px; }
+
+        .page-intro-block p {
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        body.dark .page-intro-block p { color: #888; }
+
+        /* ===== FORM WRAPPER redesign ===== */
+        .form-panel {
+            background: white;
+            border: 1px solid #eee;
+            border-top: 3px solid #cc0000;
+            padding: 44px 48px;
+            max-width: 860px;
+            margin: 0 auto;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+        }
+
+        body.dark .form-panel {
+            background: #141414;
+            border-color: #222;
+            border-top-color: #cc0000;
+        }
+
+        .form-panel-section-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #cc0000;
+            margin: 32px 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-panel-section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #eee;
+        }
+
+        body.dark .form-panel-section-title::after { background: #2a2a2a; }
+
+        .form-panel-section-title:first-child { margin-top: 0; }
+
+        /* Form fields redesign */
+        .form-group label {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #888;
+            margin-bottom: 8px;
+        }
+
+        body.dark .form-group label { color: #666; }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            background: #fafafa;
+            border: 1.5px solid #e5e5e5;
+            border-radius: 0;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #222;
+            padding: 12px 14px;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        body.dark .form-group input,
+        body.dark .form-group select,
+        body.dark .form-group textarea {
+            background: #1a1a1a;
+            border-color: #2a2a2a;
+            color: #ddd;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #cc0000;
+            background: white;
+            box-shadow: none;
+        }
+
+        body.dark .form-group input:focus,
+        body.dark .form-group select:focus,
+        body.dark .form-group textarea:focus {
+            background: #1e1e1e;
+        }
+
+        /* Submit button redesign */
+        .btn-submit {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 40px;
+            background: #cc0000;
+            color: white;
+            font-family: 'Oswald', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: background 0.25s, transform 0.2s;
+            clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+        }
+
+        .btn-submit:hover { background: #e60000; transform: translateY(-2px); }
+
+        .btn-cancel {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 30px;
+            background: transparent;
+            color: #888;
+            font-family: 'Oswald', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 1.5px solid #ddd;
+            cursor: pointer;
+            transition: border-color 0.2s, color 0.2s;
+            clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+        }
+
+        .btn-cancel:hover { border-color: #999; color: #555; }
+        body.dark .btn-cancel { border-color: #333; color: #666; }
+
+        .form-actions {
+            text-align: center;
+            margin-top: 36px;
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        button[type="submit"] {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 40px;
+            background: #cc0000;
+            color: white;
+            font-family: 'Oswald', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: background 0.25s, transform 0.2s;
+            clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+            border-radius: 0;
+        }
+
+        button[type="submit"]:hover { background: #e60000; transform: translateY(-2px); }
+
+        /* ===== POSITIONS / RECRUTEMENT redesign ===== */
+        .positions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 2px;
+            margin-bottom: 60px;
+            background: #eee;
+            border: 2px solid #eee;
+        }
+
+        body.dark .positions-grid { background: #1a1a1a; border-color: #1a1a1a; }
+
+        .position-card {
+            background: white;
+            padding: 28px 24px;
+            border-radius: 0;
+            box-shadow: none;
+            transition: background 0.2s;
+            position: relative;
+        }
+
+        body.dark .position-card { background: #111; }
+
+        .position-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: #cc0000;
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .position-card:hover::before { transform: scaleX(1); }
+        .position-card:hover { background: #fafafa; }
+        body.dark .position-card:hover { background: #161616; }
+
+        .position-category {
+            display: inline-block;
+            font-family: 'Oswald', sans-serif;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: #cc0000;
+            border: 1px solid rgba(204,0,0,0.4);
+            padding: 3px 10px;
+            margin-bottom: 12px;
+            background: transparent;
+            border-radius: 0;
+        }
+
+        .position-card h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #111;
+            margin-bottom: 8px;
+        }
+
+        body.dark .position-card h3 { color: #e0e0e0; }
+
+        .position-card p {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: #777;
+            line-height: 1.65;
+            margin-bottom: 14px;
+        }
+
+        body.dark .position-card p { color: #888; }
+
+        .position-requirements {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            color: #999;
+            line-height: 1.8;
+            margin-bottom: 18px;
+        }
+
+        .recruit-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            background: transparent;
+            color: #cc0000;
+            font-family: 'Oswald', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 1.5px solid #cc0000;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+            clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px));
+        }
+
+        .recruit-btn:hover { background: #cc0000; color: white; }
+
+        /* ===== CAREER CARDS redesign ===== */
+        .career-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2px;
+            background: #eee;
+            border: 2px solid #eee;
+        }
+
+        body.dark .career-cards { background: #1a1a1a; border-color: #1a1a1a; }
+
+        .career-card {
+            background: white;
+            border-radius: 0;
+            box-shadow: none;
+            overflow: hidden;
+            transition: background 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body.dark .career-card { background: #111; }
+        .career-card:hover { background: #fafafa; }
+        body.dark .career-card:hover { background: #161616; }
+
+        .career-card-header {
+            background: #0d0d0d;
+            padding: 26px 24px 20px;
+            color: white;
+            position: relative;
+            border-bottom: 3px solid #cc0000;
+        }
+
+        body.dark .career-card-header { background: #0a0a0a; }
+
+        .career-card-header .career-icon {
+            font-size: 36px;
+            display: block;
+            margin-bottom: 8px;
+            line-height: 1;
+        }
+
+        .career-card-header h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .career-badge {
+            font-family: 'Oswald', sans-serif;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: rgba(204,0,0,0.9);
+            border: 1px solid rgba(204,0,0,0.4);
+            padding: 3px 10px;
+            border-radius: 0;
+            background: transparent;
+            display: inline-block;
+        }
+
+        .career-card-body {
+            padding: 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .career-desc {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        body.dark .career-desc { color: #888; }
+
+        .career-missions h4 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #cc0000;
+            margin-bottom: 10px;
+        }
+
+        .career-missions ul li {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            color: #777;
+        }
+
+        body.dark .career-missions ul li { color: #999; }
+
+        .career-conditions {
+            background: #f7f7f7;
+            border-left: 3px solid #cc0000;
+            padding: 12px 14px;
+            margin-bottom: 18px;
+            border-radius: 0;
+        }
+
+        body.dark .career-conditions { background: #1a1a1a; }
+
+        .career-conditions h4 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #999;
+            margin-bottom: 6px;
+        }
+
+        .career-conditions p {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            color: #777;
+            line-height: 1.6;
+        }
+
+        body.dark .career-conditions p { color: #888; }
+
+        .career-apply-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            background: transparent;
+            color: #cc0000;
+            border: 1.5px solid #cc0000;
+            padding: 12px;
+            border-radius: 0;
+            font-family: 'Oswald', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+            clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px));
+            margin-top: auto;
+        }
+
+        .career-apply-btn:hover { background: #cc0000; color: white; }
+
+        /* ===== PPL FORMULES redesign ===== */
+        .ppl-formules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2px;
+            background: #eee;
+            border: 2px solid #eee;
+            margin-bottom: 48px;
+        }
+
+        body.dark .ppl-formules-grid { background: #1a1a1a; border-color: #1a1a1a; }
+
+        .ppl-formule-card {
+            background: white;
+            border-radius: 0;
+            box-shadow: none;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: background 0.2s;
+        }
+
+        body.dark .ppl-formule-card { background: #111; }
+        .ppl-formule-card:hover { background: #fafafa; }
+        body.dark .ppl-formule-card:hover { background: #161616; }
+
+        .ppl-formule-header {
+            background: #0d0d0d;
+            padding: 26px 24px 20px;
+            border-bottom: 3px solid #cc0000;
+            color: white;
+        }
+
+        body.dark .ppl-formule-header { background: #0a0a0a; }
+
+        .formule-num {
+            font-family: 'Oswald', sans-serif;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #cc0000;
+            margin-bottom: 8px;
+        }
+
+        .ppl-formule-header h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: white;
+            margin-bottom: 6px;
+        }
+
+        .formule-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.55;
+        }
+
+        .ppl-formule-body {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .ppl-formule-body ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        .ppl-formule-body ul li {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: #666;
+            padding: 7px 0;
+            padding-left: 16px;
+            border-bottom: 1px solid #f0f0f0;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        body.dark .ppl-formule-body ul li { color: #aaa; border-color: #1e1e1e; }
+
+        .ppl-formule-body ul li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #cc0000;
+        }
+
+        .ppl-formule-duree {
+            font-family: 'Oswald', sans-serif;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #999;
+            background: #f5f5f5;
+            padding: 8px 14px;
+            margin-bottom: 16px;
+            display: inline-block;
+        }
+
+        body.dark .ppl-formule-duree { background: #1a1a1a; color: #666; }
+
+        .ppl-formule-prix {
+            font-family: 'Oswald', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #cc0000;
+            margin-bottom: 18px;
+            display: block;
+            line-height: 1;
+        }
+
+        .ppl-formule-prix span {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 400;
+            color: #999;
+            margin-left: 4px;
+        }
+
+        .ppl-formule-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            background: transparent;
+            color: #cc0000;
+            border: 1.5px solid #cc0000;
+            padding: 12px;
+            border-radius: 0;
+            font-family: 'Oswald', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+            clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px));
+        }
+
+        .ppl-formule-btn:hover { background: #cc0000; color: white; }
+
+        /* PPL form section redesign */
+        .ppl-form-panel {
+            margin-top: 48px;
+        }
+
+        /* ===== CONTACT redesign ===== */
+        .contact-section { padding: 0; max-width: 100%; margin: 0; }
+
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2px;
+            background: #eee;
+            border: 2px solid #eee;
+        }
+
+        body.dark .contact-cards { background: #1a1a1a; border-color: #1a1a1a; }
+
+        .contact-card {
+            background: white;
+            border-radius: 0;
+            box-shadow: none;
+            padding: 40px 32px;
+            text-align: center;
+            transition: background 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body.dark .contact-card { background: #111; }
+        .contact-card:hover { background: #fafafa; transform: none; box-shadow: none; }
+        body.dark .contact-card:hover { background: #161616; }
+
+        .contact-card::before {
+            height: 3px;
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+        }
+
+        .contact-card.ville::before { background: #5865F2; }
+        .contact-card.defense::before { background: #cc0000; }
+
+        .contact-card-icon { font-size: 48px; margin-bottom: 14px; display: block; }
+
+        .contact-card h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #111;
+            margin-bottom: 8px;
+        }
+
+        body.dark .contact-card h3 { color: #e0e0e0; }
+
+        .contact-card p {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: #777;
+            line-height: 1.7;
+            margin-bottom: 22px;
+        }
+
+        body.dark .contact-card p { color: #888; }
+
+        .contact-badge {
+            font-family: 'Oswald', sans-serif;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #999;
+            border: 1px solid #ddd;
+            padding: 3px 10px;
+            background: transparent;
+            border-radius: 0;
+            display: inline-block;
+            margin-bottom: 14px;
+        }
+
+        body.dark .contact-badge { border-color: #333; color: #666; }
+
+        .discord-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 26px;
+            border-radius: 0;
+            font-family: 'Oswald', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.25s;
+            color: white;
+            clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+        }
+
+        .discord-btn.ville { background: #5865F2; }
+        .discord-btn.ville:hover { background: #4752c4; transform: translateY(-2px); box-shadow: 0 5px 20px rgba(88,101,242,0.4); }
+        .discord-btn.defense { background: #cc0000; }
+        .discord-btn.defense:hover { background: #e60000; transform: translateY(-2px); box-shadow: 0 5px 20px rgba(204,0,0,0.4); }
+
+        /* Messages */
+        .message {
+            padding: 14px 18px;
+            border-left: 3px solid;
+            margin-bottom: 20px;
+            animation: slideIn 0.3s ease-out;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            border-radius: 0;
+        }
+
+        .message.success { background: #f0fdf4; color: #166534; border-color: #22c55e; }
+        .message.error { background: #fef2f2; color: #991b1b; border-color: #cc0000; }
+
+        body.dark .message.success { background: #0a1f0e; color: #4ade80; }
+        body.dark .message.error { background: #1a0505; color: #f87171; }
+
+        /* Recruitment form panel */
+        .recruitment-form-reveal {
+            margin-top: 48px;
+        }
+
+
+        /* Dark mode — inner pages */
+        body.dark .inner-page-content { background: transparent; }
+        body.dark .form-panel { background: #141414; border-color: #222; }
+        body.dark .page-hero-bg { filter: brightness(0.25) saturate(0.7); }
+        body.dark header { background: #111; border-bottom: 1px solid #222; }
+        body.dark .nav-hamburger { border-color: #333; }
+        body.dark .nav-hamburger span { background: #ccc; }
+        body.dark .nav-dropdown { background: #1a1a1a; box-shadow: 0 8px 30px rgba(0,0,0,0.5); }
+        body.dark .nav-dropdown ul li a,
+        body.dark .nav-dropdown ul li button.nav-link { color: #ccc; }
+        body.dark .nav-dropdown ul li a:hover,
+        body.dark .nav-dropdown ul li button.nav-link:hover { background: #222; color: #cc0000; }
+        body.dark .nav-dropdown .dropdown-divider { background: #222; }
+        body.dark .nav-dropdown .theme-row:hover { background: #222; }
+        body.dark .nav-dropdown .theme-label { color: #ccc; }
+        body.dark .nav-logo { color: #ddd; }
+        body.dark body { background: #0d0d0d; color: #ddd; }
     </style>
 </head>
 <body>
@@ -1447,14 +2277,21 @@
 
                 <!-- PLAN DE VOL PAGE -->
         <div class="page" id="plan-vol">
-            <div class="form-section">
-                <h2>✈️ Plan de Vol</h2>
-
+            <div class="page-hero">
+                <div class="page-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=1400&q=80');"></div>
+                <div class="page-hero-overlay"></div>
+                <div class="page-hero-redline"></div>
+                <div class="page-hero-content">
+                    <div class="page-hero-eyebrow">Composante Air</div>
+                    <h1 class="page-hero-title">Plan de <span>Vol</span></h1>
+                    <p class="page-hero-sub">Déposez votre plan de vol officiel avant chaque mission aérienne. Obligatoire pour tout aéronef évoluant dans l'espace aérien de Liège City.</p>
+                </div>
+            </div>
+            <div class="inner-page-content">
                 <div id="flight-messages"></div>
-
-                <div class="form-wrapper">
+                <div class="form-panel">
                     <form id="flightForm">
-                        <h3 style="margin-bottom: 20px; color: #cc0000;">Informations Pilotes</h3>
+                        <div class="form-panel-section-title">✈️ Informations Pilotes</div>
                         <div class="form-grid">
                             <div class="form-group">
                                 <label>Pilote (Nom + Prénom)</label>
@@ -1465,8 +2302,7 @@
                                 <input type="text" id="copilot">
                             </div>
                         </div>
-
-                        <h3 style="margin-top: 25px; margin-bottom: 20px; color: #cc0000;">Informations de l'Aéronef</h3>
+                        <div class="form-panel-section-title">🛩️ Informations de l'Aéronef</div>
                         <div class="form-grid">
                             <div class="form-group">
                                 <label>Transpondeur de l'aéronef</label>
@@ -1481,8 +2317,7 @@
                                 <input type="number" id="passengers-count" min="1" value="1" required>
                             </div>
                         </div>
-
-                        <h3 style="margin-top: 25px; margin-bottom: 20px; color: #cc0000;">Informations de Vol</h3>
+                        <div class="form-panel-section-title">📍 Informations de Vol</div>
                         <div class="form-grid">
                             <div class="form-group">
                                 <label>Date du Vol</label>
@@ -1515,14 +2350,12 @@
                                 </select>
                             </div>
                         </div>
-
-                        <div class="form-group" style="margin-top: 25px;">
+                        <div class="form-group" style="margin-top: 10px;">
                             <label>Notes Supplémentaires / Noms Personnes à Bord</label>
                             <textarea id="notes"></textarea>
                         </div>
-
                         <div class="form-actions">
-                            <button type="submit">Enregistrer le Plan de Vol</button>
+                            <button type="submit">✈️ Enregistrer le Plan de Vol</button>
                         </div>
                     </form>
                 </div>
@@ -1531,12 +2364,19 @@
 
         <!-- RECRUTEMENT PAGE -->
         <div class="page" id="recrutement">
-            <div class="recruitment-section">
-                <h2>Rejoignez La Défense</h2>
-                <div class="recruitment-intro">
-                    <p>La Défense belge recrute des professionnels motivés et passionnés pour rejoindre ses rangs. 
-                    Si vous cherchez une carrière enrichissante au service de la nation, nous vous accueillons!</p>
+            <div class="page-hero">
+                <div class="page-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1517976487492-5750f3195933?w=1400&q=80');"></div>
+                <div class="page-hero-overlay"></div>
+                <div class="page-hero-redline"></div>
+                <div class="page-hero-content">
+                    <div class="page-hero-eyebrow">Rejoignez nos rangs</div>
+                    <h1 class="page-hero-title"><span>Recrutement</span></h1>
+                    <p class="page-hero-sub">La Défense belge recrute des professionnels motivés pour rejoindre ses rangs. Une carrière au service de la nation vous attend.</p>
                 </div>
+            </div>
+            <div class="inner-page-content">
+            <div class="recruitment-section" style="padding:0;">
+                <div style="margin-bottom:40px;"></div>
 
                 <div class="positions-grid">
                     <div class="position-card">
@@ -1625,13 +2465,11 @@
                 </div>
 
                 <!-- Formulaire de Candidature -->
-                <div class="form-section" id="recruitment-form" style="display: none;">
-                    <h2>Formulaire de Candidature</h2>
-
-                    <div id="recruitment-messages"></div>
-
-                    <div class="form-wrapper">
+                <div class="recruitment-form-reveal" id="recruitment-form" style="display: none;">
+                    <div class="form-panel">
+                        <div id="recruitment-messages"></div>
                         <form id="recruitmentForm">
+                            <div class="form-panel-section-title">📋 Poste & Identité</div>
                             <div class="form-grid">
                                 <div class="form-group">
                                     <label>Poste Souhaité *</label>
@@ -1642,7 +2480,7 @@
                                     <input type="text" id="fullname" required>
                                 </div>
                             </div>
-
+                            <div class="form-panel-section-title">📞 Coordonnées</div>
                             <div class="form-grid">
                                 <div class="form-group">
                                     <label>Email *</label>
@@ -1653,35 +2491,39 @@
                                     <input type="tel" id="phone" required>
                                 </div>
                             </div>
-
+                            <div class="form-panel-section-title">💼 Candidature</div>
                             <div class="form-group">
                                 <label>Expérience Professionnelle</label>
                                 <textarea id="experience"></textarea>
                             </div>
-
                             <div class="form-group">
-                                <label>Pourquoi rejoindre La Défense?</label>
+                                <label>Pourquoi rejoindre La Défense ?</label>
                                 <textarea id="motivation"></textarea>
                             </div>
-
                             <div class="form-actions">
-                                <button type="submit">Envoyer ma Candidature</button>
+                                <button type="submit">✉️ Envoyer ma Candidature</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
+            </div>
         </div>
 
         <!-- CARRIERES PAGE -->
         <div class="page" id="carrieres">
-            <div class="carrieres-section">
-                <h2>🎖️ Nos Carrières</h2>
-                <p class="carrieres-intro">
-                    Découvrez les métiers qui font La Défense. Chaque rôle est essentiel à notre mission.<br>
-                    Trouvez votre vocation et rejoignez nos rangs.
-                </p>
-
+            <div class="page-hero">
+                <div class="page-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=1400&q=80');"></div>
+                <div class="page-hero-overlay"></div>
+                <div class="page-hero-redline"></div>
+                <div class="page-hero-content">
+                    <div class="page-hero-eyebrow">Opportunités</div>
+                    <h1 class="page-hero-title">Nos <span>Carrières</span></h1>
+                    <p class="page-hero-sub">Découvrez les métiers qui font La Défense. Chaque rôle est essentiel à notre mission. Trouvez votre vocation et rejoignez nos rangs.</p>
+                </div>
+            </div>
+            <div class="inner-page-content">
+            <div class="carrieres-section" style="padding:0;">
                 <div class="career-cards">
 
                     <!-- Soldat d'Infanterie -->
@@ -1869,19 +2711,24 @@
 
                 </div>
             </div>
+            </div>
         </div>
 
         <!-- PPL PAGE -->
         <div class="page" id="ppl">
-            <div class="missions-section">
-                <h2>🛩️ Permis de Vol PPL</h2>
-                <p class="missions-description">
-                    Préparez votre <strong>Permis de Pilote Privé (PPL)</strong> avec l'aide de nos instructeurs qualifiés.
-                    Choisissez la formule adaptée à votre niveau et à vos besoins.
-                </p>
-
+            <div class="page-hero">
+                <div class="page-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1400&q=80');"></div>
+                <div class="page-hero-overlay"></div>
+                <div class="page-hero-redline"></div>
+                <div class="page-hero-content">
+                    <div class="page-hero-eyebrow">Formation Aviation</div>
+                    <h1 class="page-hero-title">Permis de Vol <span>PPL</span></h1>
+                    <p class="page-hero-sub">Préparez votre Permis de Pilote Privé avec nos instructeurs qualifiés. Choisissez la formule adaptée à votre niveau et vos besoins.</p>
+                </div>
+            </div>
+            <div class="inner-page-content">
+            <div class="missions-section" style="padding:0;">
                 <div id="ppl-messages"></div>
-
                 <!-- Formules -->
                 <div class="ppl-formules-grid">
 
@@ -1954,13 +2801,11 @@
                 </div>
 
                 <!-- Formulaire de RDV PPL -->
-                <div class="form-section" id="ppl-form-section" style="display:none;">
-                    <h2>📅 Réserver votre séance</h2>
-                    <div class="form-wrapper">
-                        <p style="text-align:center; color:#555; margin-bottom:24px; font-size:15px; line-height:1.7;" id="ppl-selected-label"></p>
-
+                <div class="ppl-form-panel" id="ppl-form-section" style="display:none;">
+                    <div class="form-panel">
+                        <p style="text-align:center; color:#888; margin-bottom:28px; font-size:14px; line-height:1.7; font-family:'Inter',sans-serif;" id="ppl-selected-label"></p>
                         <form id="pplForm">
-                            <h3 style="margin-bottom: 20px; color: #cc0000;">Informations du Candidat</h3>
+                            <div class="form-panel-section-title">👤 Informations du Candidat</div>
                             <div class="form-grid">
                                 <div class="form-group">
                                     <label>Nom *</label>
@@ -1982,7 +2827,7 @@
                                 </div>
                             </div>
 
-                            <h3 style="margin-top: 25px; margin-bottom: 20px; color: #cc0000;">Rendez-vous Souhaité</h3>
+                            <div class="form-panel-section-title">📅 Rendez-vous Souhaité</div>
                             <div class="form-grid">
                                 <div class="form-group">
                                     <label>Date souhaitée *</label>
@@ -2007,7 +2852,7 @@
                             </div>
 
                             <div class="form-actions">
-                                <button type="button" onclick="closePplForm()" style="background:#999; margin-right:10px;" class="cta-button">Annuler</button>
+                                <button type="button" onclick="closePplForm()" class="btn-cancel">Annuler</button>
                                 <button type="submit">📅 Confirmer le Rendez-vous</button>
                             </div>
                         </form>
@@ -2015,23 +2860,26 @@
                 </div>
 
             </div>
+            </div>
         </div>
 
         <!-- RDV PAGE -->
         <div class="page" id="rdv">
-            <div class="form-section">
-                <h2>📅 Prendre Rendez-vous</h2>
-
+            <div class="page-hero">
+                <div class="page-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1400&q=80');"></div>
+                <div class="page-hero-overlay"></div>
+                <div class="page-hero-redline"></div>
+                <div class="page-hero-content">
+                    <div class="page-hero-eyebrow">La Défense — Liège City</div>
+                    <h1 class="page-hero-title">Prendre <span>Rendez-vous</span></h1>
+                    <p class="page-hero-sub">Planifiez un rendez-vous avec La Défense selon votre profil. Remplissez le formulaire et nous reviendrons vers vous rapidement.</p>
+                </div>
+            </div>
+            <div class="inner-page-content">
                 <div id="rdv-messages"></div>
-
-                <div class="form-wrapper">
-                    <p style="text-align:center; color:#555; margin-bottom:30px; font-size:15px; line-height:1.7;">
-                        Planifiez un rendez-vous avec <strong>La Défense</strong> selon votre profil.<br>
-                        Remplissez le formulaire ci-dessous et nous reviendrons vers vous rapidement.
-                    </p>
-
+                <div class="form-panel">
                     <form id="rdvForm">
-                        <h3 style="margin-bottom: 20px; color: #cc0000;">Informations Personnelles</h3>
+                        <div class="form-panel-section-title">👤 Informations Personnelles</div>
                         <div class="form-grid">
                             <div class="form-group">
                                 <label>Nom Complet *</label>
@@ -2054,7 +2902,7 @@
                             </div>
                         </div>
 
-                        <h3 style="margin-top: 25px; margin-bottom: 20px; color: #cc0000;">Type de Rendez-vous</h3>
+                        <div class="form-panel-section-title">📌 Type de Rendez-vous</div>
 
                         <div class="form-group">
                             <label>Catégorie *</label>
@@ -2077,7 +2925,7 @@
                             <input type="text" id="rdv-subject" required placeholder="Ex: Demande de soutien, Collaboration, Renseignements...">
                         </div>
 
-                        <h3 style="margin-top: 25px; margin-bottom: 20px; color: #cc0000;">Disponibilités</h3>
+                        <div class="form-panel-section-title">📅 Disponibilités</div>
                         <div class="form-grid">
                             <div class="form-group">
                                 <label>Date souhaitée *</label>
@@ -2104,12 +2952,18 @@
 
         <!-- CONTACT PAGE -->
         <div class="page" id="contact">
+            <div class="page-hero">
+                <div class="page-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1577563908411-5077b6dc7624?w=1400&q=80');"></div>
+                <div class="page-hero-overlay"></div>
+                <div class="page-hero-redline"></div>
+                <div class="page-hero-content">
+                    <div class="page-hero-eyebrow">Communication</div>
+                    <h1 class="page-hero-title">Nous <span>Contacter</span></h1>
+                    <p class="page-hero-sub">Rejoignez nos serveurs Discord pour rester informé, poser vos questions et intégrer la communauté de Liège City.</p>
+                </div>
+            </div>
+            <div class="inner-page-content">
             <div class="contact-section">
-                <h2>📡 Nous Contacter</h2>
-                <p class="contact-intro">
-                    Rejoignez nos serveurs Discord pour rester informé, poser vos questions<br>
-                    et intégrer la communauté de Liège City.
-                </p>
                 <div class="contact-cards">
                     <div class="contact-card ville">
                         <span class="contact-card-icon">🏙️</span>
@@ -2133,11 +2987,12 @@
                     </div>
                 </div>
             </div>
+            </div>
         </div>
 
     <!-- Footer -->
-    <footer>
-        <p>© La Défense Belge - Tous droits réservés (Liège City WL - Maxime Vandel)</p>
+    <footer style="background:#0d0d0d; border-top:3px solid #cc0000; padding:28px 40px; text-align:center;">
+        <p style="font-family:'Oswald',sans-serif; font-size:12px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.3);">© La Défense Belge &mdash; Liège City WL &mdash; Maxime Vandel</p>
     </footer>
 
     <script>
